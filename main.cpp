@@ -52,9 +52,9 @@ int main(int argc, char* argv[]) {
     double h = 1.0/(n+1.0);
     double hh = h*h;
     double *x = new double[n+2];
-    double *d = new double[n+1]; // construction with n+1 points to make
+    double *d_tilde = new double[n+1]; // construction with n+1 points to make
                                        // indexing close to mathematics.
-    d[0] = 0;
+    d_tilde[0] = 0;
 
     // The constituents of the tridiagonal matrix A:
     // Zeroth element not needed, but included to make indexing easy:
@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
 
     double *v = new double[n+2]; // Numerical solution
 
-    double *d_tilde = new double[n+1]; // Vector on right hand side updated
+    double *d = new double[n+1]; // Vector on right hand side updated
 
     // Including extra points to make the indexing easy:
     u[0] = 0;
@@ -136,7 +136,7 @@ int main(int argc, char* argv[]) {
 
     double *v_special = new double[n+2]; // Numerical solution
 
-    double *f_special = new double[n+1]; // Vector on right hand side updated
+    double *d_special = new double[n+1]; // Vector on right hand side updated
 
 
     for (int i = 1; i <= n; i++) {
@@ -146,17 +146,17 @@ int main(int argc, char* argv[]) {
 
     start = clock();
 
-    f_special[1] = hh*f(x[1]);
+    d_special[1] = hh*f(x[1]);
     for (int i = 2; i <= n; i++) {
         // Updating right hand side of matrix equation:
-        f_special[i] = d[i] + ((i-1.0)*f_special[i-1])/((double) i);
+        d_special[i] = d[i] + ((i-1.0)*d_special[i-1])/((double) i);
     }
 
    // Row reduction; backward substition:
    // Defining v[n] = f_special[n]/b_special[n]
-   v_special[n] = f_special[n]/b_special[n];
+   v_special[n] = d_special[n]/b_special[n];
    for (int i = n; i >= 2; i--) {
-   v_special[i-1] = ((i-1.0)/((double)i)) * (f_special[i-1]+v_special[i]);
+   v_special[i-1] = ((i-1.0)/((double)i)) * (d_special[i-1]+v_special[i]);
    }
 
    finish = clock();
@@ -198,20 +198,21 @@ int main(int argc, char* argv[]) {
 
    mat A = zeros<mat>(n,n);
    // Set up arrays for the simple case
-   vec bM(n);  vec xM(n);
-   A(0,0) = 2.0;  A(0,1) = -1;  xM(0) = h;  bM(0) =  hh*f(xM(0));
-   xM(n-1) = xM(0)+(n-1)*h; bM(n-1) = hh*f(xM(n-1));
+   vec d_lu(n);  // d_lu is the vector on the right hand side
+   vec x_lu(n);  // x_lu is the x-values for the function.
+   A(0,0) = 2.0;  A(0,1) = -1;  x_lu(0) = h;  d_lu(0) =  hh*f(x_lu(0));
+   x_lu(n-1) = x_lu(0)+(n-1)*h; d_lu(n-1) = hh*f(x_lu(n-1));
    for (int i = 1; i < n-1; i++){
-    xM(i) = xM(i-1)+h;
-    bM(i) = hh*f(xM(i));
+    x_lu(i) = x_lu(i-1)+h;
+    d_lu(i) = hh*f(x_lu(i));
     A(i,i-1)  = -1.0;
     A(i,i)    = 2.0;
     A(i,i+1)  = -1.0;
    }
    A(n-1,n-1) = 2.0; A(n-2,n-1) = -1.0; A(n-1,n-2) = -1.0;
 
-   // solve Ax = b
-   vec solution  = solve(A,bM);
+   // solve Av = d
+   vec v_lu  = solve(A,d_lu);
 
    finish = clock();
    double time_lu = (double) (finish - start)/(CLOCKS_PER_SEC);
@@ -229,7 +230,7 @@ int main(int argc, char* argv[]) {
        ofile << setw(15) << setprecision(8) << u[i];
        ofile << setw(15) << setprecision(8) << v[i];
        ofile << setw(15) << setprecision(8) << v_special[i];
-       ofile << setw(15) << setprecision(8) << solution[i-1];
+       ofile << setw(15) << setprecision(8) << v_lu[i-1];
        ofile << setw(15) << setprecision(8) << RelativeError << endl;
     }
     ofile.close();
@@ -244,7 +245,7 @@ int main(int argc, char* argv[]) {
     delete [] d_tilde;
     delete [] b_special;
     delete [] v_special;
-    delete [] f_special;
+    delete [] d_special;
 
     return 0;
 }
