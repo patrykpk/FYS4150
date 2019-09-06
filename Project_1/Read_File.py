@@ -41,7 +41,7 @@ def read_file(filename):
 		plt.ylim(0,0.75)
 		plt.ylabel("$u(x) \quad &\quad  v(x)  $", fontsize=12)
 		plt.legend(loc=1, fontsize=13)
-		savefig("PlotComparison_%d" % n)
+		savefig("./Plots/PlotComparison_%d" % n)
 
 		h.append(log10(1.0/(n+1.0)))
 		max_error_G.append(nanmax(Error_G))
