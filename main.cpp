@@ -167,7 +167,7 @@ int main(int argc, char* argv[]) {
 
  /*
 
-   // LU-DECOMPOSITION (Egil)
+   // LU-DECOMPOSITION E
 
          // Define matrix and arrays
          mat A = zeros<mat>(n,n);  vec diagonal_lu(n); vec solution_lu(n+2);
