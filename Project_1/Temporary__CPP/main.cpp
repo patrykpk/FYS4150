@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
     char *outfilename;
     int n;
 
-    if( argc <= 3 ){
+    if( argc <= 2 ){
       cout << "Error occured: " << argv[0] <<
           " read also output filename, n (int) and if you want to run LU on same line" << endl;
       exit(1);
@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
     for (int i=0; i<=n+1; i++) {
         x[i] = i*h;
         u[i] = Solution(x[i]);
-        std::cout << u[i] << endl;
+        //std::cout << u[i] << endl;
     }
 
     General_Algorithm(x, f, a, b, c, d, d_tilde, b_tilde, v, h, n);
@@ -72,12 +72,11 @@ int main(int argc, char* argv[]) {
 
     Special_Algorithm(x, f, d, b_special, v_special, f_special, h, n);
 
-    if (argv[3] == string("Y")){
+    if (argv[3]){
         cout << "Running LU" << "\n";
         LU_Decomp_Arma(x, f, h, n);
-    } else if (argv[3] == string("N")){
-        cout << "Not running LU" << "\n";
-    } else {
+    } else if (!argv[3]){
+        cout << "Not running LU";
         cout << "Error: You have to declare if you want to run LU. Input must be either [Y] or [N]" << "\n";
         exit(1);
     }
