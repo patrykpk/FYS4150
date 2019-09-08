@@ -21,14 +21,14 @@ def Read_file(filename):
 
         infile.readline()
 
-		#Stores additional information
+        #Stores additional information
         if n <= 1000:
             x = []
             Exact = []
             Approx_Special = []
             Approx_General = []
 
-			#Reads the file and extracts values into lists
+            #Reads the file and extracts values into lists
             for e in infile:
                 x.append(float(e.split()[0]))
                 Exact.append(float(e.split()[1]))
