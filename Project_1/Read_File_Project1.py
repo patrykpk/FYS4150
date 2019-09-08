@@ -53,7 +53,7 @@ def Read_file(filename):
             plt.savefig("./Plots/PlotComparison_%d" % n)
 
         else:
-			#Extracting the error and step length
+            #Extracting the error and step length
             for e in infile:
                 Error_G.append(float(e.split()[4]))
                 Error_S.append(float(e.split()[5]))
