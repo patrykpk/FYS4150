@@ -95,6 +95,7 @@ int main(int argc, char* argv[]) {
     }
     ofile.close();
 
+    // Freeing the memory for arrays
     delete [] x;
     delete [] u;
     delete [] v;
