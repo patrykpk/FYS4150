@@ -1,4 +1,4 @@
-       x:             u(x):          v(x):          v_special         RelativeError_General        RelativeError_Special
+         x:             u(x):         v(x):       v_special:   RelError_Gen:  RelError_Spec:
       0.0000000      0.0000000      0.0000000      0.0000000            NAN            NAN
    0.0099009901    0.084365719    0.084296833    0.084296833     -3.0880368     -3.0880368
     0.019801980     0.15984531     0.15971479     0.15971479     -3.0880368     -3.0880368
