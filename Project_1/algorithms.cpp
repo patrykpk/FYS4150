@@ -94,21 +94,23 @@ double *Special_Algorithm(double *x, double (*f)(double), double h, int n){
     double *d = new double[n+1];
     double *b_special = new double[n+1]; // Diagonal element
     double *v_special = new double[n+2]; // Numerical solution
-    double *f_special = new double[n+1]; // Vector on right hand side updated
+    double *d_special = new double[n+1]; // Vector on right hand side updated
     clock_t start, finish;
     for (int i = 1; i <= n; i++) {
         b_special[i] = (i+1.0)/((double) i);
+        d[i] = h*h*f(x[i]);
     }
     v_special[0] = 0;
-    f_special[1] = h*h*f(x[1]);
+    v_special[n+1] = 0;
+    d_special[1] = h*h*f(x[1]);
     start = clock();
     for (int i = 2; i <= n; i++) {
-        f_special[i] = d[i] + ((i-1.0)*f_special[i-1])/((double) i);
+        d_special[i] = d[i] + ((i-1.0)*d_special[i-1])/((double) i);
     }
 
-   v_special[n] = f_special[n]/b_special[n];
+   v_special[n] = d_special[n]/b_special[n];
    for (int i = n; i >= 2; i--) {
-   v_special[i-1] = ((i-1.0)/((double)i)) * (f_special[i-1]+v_special[i]);
+   v_special[i-1] = ((i-1.0)/((double)i)) * (d_special[i-1]+v_special[i]);
    }
 
    finish = clock();
@@ -117,7 +119,7 @@ double *Special_Algorithm(double *x, double (*f)(double), double h, int n){
    printf("--------------------------------------------------\n");
 
    delete [] b_special;
-   delete [] f_special;
+   delete [] d_special;
    delete [] d;
 
 

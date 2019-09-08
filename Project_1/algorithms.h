@@ -6,4 +6,3 @@ double *General_Algorithm(double *x, double (*f)(double), double h, int n);
 double *Special_Algorithm(double *x, double (*f)(double), double h, int n);
 
 #endif // ALGORITHMS_H
-
