@@ -33,13 +33,20 @@ Checking time while performing general and special algorithm:
 /////////////////////////////////////////////////////////////
 
 \--------------------------------------------------
+
 Performing general algorithm required: 0.00000400s
 Performing special algorithm required: 0.00000200s
+
 \--------------------------------------------------
+
 You have entered a third argument: Running LU
+
 \--------------------------------------------------
+
 Performing LU required: 0.00059000s
+
 \--------------------------------------------------
+
 
 # Python script:
 Python script does not require any arguments and simply running it in the folder that contains the output files does the work. The script searches for all files starting with 
