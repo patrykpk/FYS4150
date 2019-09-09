@@ -68,7 +68,7 @@ int main(int argc, char* argv[]) {
 
     // Checking if third command line argument is given
     if (argv[3]){
-        cout << "Running LU" << endl;
+        cout << "You have entered a third argument: Running LU" << endl;
         LU_Decomp_Arma(x, f, h, n);              // Function from algorithms.cpp
     } else if (!argv[3]){
         cout << "--------------"<< endl;
