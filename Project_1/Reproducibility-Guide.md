@@ -29,12 +29,16 @@ Y - Arbitary argument to run LU-Decomposition
 **Result from terminal:**
 
 /////////////////////////////////////////////////////////////
+
 Checking time while performing general and special algorithm:
+
 /////////////////////////////////////////////////////////////
+
 
 \--------------------------------------------------
 
 Performing general algorithm required: 0.00000400s
+
 Performing special algorithm required: 0.00000200s
 
 \--------------------------------------------------
