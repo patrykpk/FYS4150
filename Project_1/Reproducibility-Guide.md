@@ -31,28 +31,16 @@ Command line arguments: Project_1_Results 10 Y
 
 
 **Result from terminal:**
-
-/////////////////////////////////////////////////////////////
-
-Checking time while performing general and special algorithm:
-
-/////////////////////////////////////////////////////////////
-
-
-\--------------------------------------------------
-
-Performing general algorithm required: 0.00000400s
-
-Performing special algorithm required: 0.00000200s
-
-\--------------------------------------------------
-
-You have entered a third argument: Running LU
-
-\--------------------------------------------------
-
-Performing LU required: 0.00059000s
-
+>\/////////////////////////////////////////////////////////////\
+Checking time while performing general and special algorithm:\
+/////////////////////////////////////////////////////////////\
+\--------------------------------------------------\
+Performing general algorithm required: 0.00000400s\
+Performing special algorithm required: 0.00000200s\
+\--------------------------------------------------\
+You have entered a third argument: Running LU\
+\--------------------------------------------------\
+Performing LU required: 0.00059000s\
 \--------------------------------------------------
 
 
