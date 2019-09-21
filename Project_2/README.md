@@ -8,3 +8,11 @@ to make it possible for another person to verify that these results are indeed c
 This file contains a guide on how the programs should be run without any problems and/or errors occuring.
 
 > **Note:** QtCreator creates seperate build folder after compiling the C++ files.
+```python
+import os
+
+if not os.path.exists("My_Folder"):
+	os.makedirs("My_Folder")
+else:
+	print ("Folder already exists")
+```
