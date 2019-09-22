@@ -1,28 +1,10 @@
 #include <iostream>
 #include <armadillo>
+#include <string>
 
 using namespace std;
 using namespace arma;
 
-mat Toeplitz(int n, double h){
-
-    mat A = zeros<mat>(n,n);
-
-    double Diagonal = 2.0/(h*h);
-    double NonDiagonal = -1.0/(h*h);
-
-    //Indexing the missing values at start and end
-    //Since Diagonal contains one more value
-    A(0,0) = Diagonal; A(0,1) = NonDiagonal;
-    A(n-1,n-1) = Diagonal; A(n-1, n-2) = NonDiagonal;
-
-    for (int i = 1; i < n-1; i++){
-        A(i,i) = Diagonal;
-        A(i,i-1) = NonDiagonal;
-        A(i,i+1) = NonDiagonal;
-    }
-    return A;
-}
 
 mat Identity(int n){
 
@@ -34,40 +16,90 @@ mat Identity(int n){
     return A;
 }
 
-mat Toeplitz_2d(int n){
+mat Toeplitz(int n, double rho_max, string method, double wr){
 
     mat A = zeros<mat>(n,n);
 
-
-
-    vec rho(n);
+    vec rho(n+1);
     // start point;
     rho(0) = 0.0;
     // End point which is approximated to infinity
-    rho(n-1) = 10.0;
+    rho(n) = rho_max;
 
     // Calculating the step size
-    double h = (rho(n-1) - rho(0))/ (double) n;
+    double h = (rho(n) - rho(0))/ (double) n;
 
-    for (int i =1; i<n-2; i++)
+
+    // Calculating the values for rho
+    for (int i = 1; i < n; i++)
     {
-        rho(i) = i*h;
-
+        rho(i) = rho(0) + i*h;
     }
 
 
     double Diagonal = 2.0/(h*h);
     double NonDiagonal = -1.0/(h*h);
 
-    //Indexing the missing values at start and end
-    //Since Diagonal contains one more value
-    //A(0,0) = Diagonal; A(0,1) = NonDiagonal;
-    A(n-1,n-1) = Diagonal+rho(n-2)*rho(n-2); A(n-1, n-2) = NonDiagonal;
 
-    for (int i = 1; i < n-1; i++){
-        A(i,i) = Diagonal + rho(i)*rho(i);
-        A(i,i-1) = NonDiagonal;
-        A(i,i+1) = NonDiagonal;
+
+
+
+    if (method == "buckling" ) {
+
+        cout << "Running method 1" << endl;
+
+        //Indexing the missing values at start and end
+        //Since Diagonal contains one more value
+        A(0,0) = Diagonal; A(0,1) = NonDiagonal;
+        A(n-1,n-1) = Diagonal; A(n-1, n-2) = NonDiagonal;
+
+        for (int i = 1; i < n-1; i++){
+            A(i,i) = Diagonal;
+            A(i,i-1) = NonDiagonal;
+            A(i,i+1) = NonDiagonal;
+        }
     }
+    else if(method == "qdot1") {
+        cout << "Running method 2" << endl;
+
+        //Indexing the missing values at start and end
+        //Since Diagonal contains one more value
+        A(0,0) = Diagonal + rho(0)*rho(0); A(0,1) = NonDiagonal;
+        A(n-1,n-1) = Diagonal + rho(n-1)*rho(n-1); A(n-1, n-2) = NonDiagonal;
+
+        for (int i = 1; i < n-1; i++){
+            A(i,i) = Diagonal + rho(i)*rho(i);
+            A(i,i-1) = NonDiagonal;
+            A(i,i+1) = NonDiagonal;
+        }
+    }
+
+    else if (method == "qdot2"){
+
+        cout << "Running method 3 \n";
+        cout << "Frequency wr " << wr << endl;
+
+        // Frequency variabel
+        double wr_2 = wr*wr;
+
+        //Indexing the missing values at start and end
+        //Since Diagonal contains one more value
+        A(0,0) = Diagonal + wr_2*rho(0)*rho(0); A(0,1) = NonDiagonal;
+        A(n-1,n-1) = Diagonal + wr_2*rho(n-1)*rho(n-1) + 1.0/rho(n-1); A(n-1, n-2) = NonDiagonal;
+
+        for (int i = 1; i < n-1; i++){
+            A(i,i) = Diagonal + wr_2*rho(i)*rho(i) + 1.0/rho(i);
+            A(i,i-1) = NonDiagonal;
+            A(i,i+1) = NonDiagonal;
+
+        }
+     }
+    else {
+        cout << "-------------------------------------------------------------------\n";
+        cout << "Error: Third command line argument is required to choose the method used." << endl;
+        cout << "-------------------------------------------------------------------\n";
+     exit(1);
+     }
+
     return A;
 }
