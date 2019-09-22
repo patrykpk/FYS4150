@@ -31,8 +31,7 @@ mat Toeplitz(int n, double rho_max, string method, double wr){
 
 
     // Calculating the values for rho
-    for (int i = 1; i < n; i++)
-    {
+    for (int i = 1; i < n; i++){
         rho(i) = rho(0) + i*h;
     }
 
@@ -64,11 +63,11 @@ mat Toeplitz(int n, double rho_max, string method, double wr){
 
         //Indexing the missing values at start and end
         //Since Diagonal contains one more value
-        A(0,0) = Diagonal + rho(0)*rho(0); A(0,1) = NonDiagonal;
-        A(n-1,n-1) = Diagonal + rho(n-1)*rho(n-1); A(n-1, n-2) = NonDiagonal;
+        A(0,0) = Diagonal + rho(1)*rho(1); A(0,1) = NonDiagonal;
+        A(n-1,n-1) = Diagonal + rho(n)*rho(n); A(n-1, n-2) = NonDiagonal;
 
         for (int i = 1; i < n-1; i++){
-            A(i,i) = Diagonal + rho(i)*rho(i);
+            A(i,i) = Diagonal + rho(i+1)*rho(i+1);
             A(i,i-1) = NonDiagonal;
             A(i,i+1) = NonDiagonal;
         }
@@ -77,6 +76,10 @@ mat Toeplitz(int n, double rho_max, string method, double wr){
     else if (method == "qdot2"){
 
         cout << "Running method 3 \n";
+        if (wr == 0.0){
+            cout << "Can't run method 3 with wr = 0.0\n";
+            exit(1);
+        }
         cout << "Frequency wr " << wr << endl;
 
         // Frequency variabel
@@ -84,11 +87,11 @@ mat Toeplitz(int n, double rho_max, string method, double wr){
 
         //Indexing the missing values at start and end
         //Since Diagonal contains one more value
-        A(0,0) = Diagonal + wr_2*rho(0)*rho(0); A(0,1) = NonDiagonal;
-        A(n-1,n-1) = Diagonal + wr_2*rho(n-1)*rho(n-1) + 1.0/rho(n-1); A(n-1, n-2) = NonDiagonal;
+        A(0,0) = Diagonal + wr_2*rho(1)*rho(1)+1.0/rho(1); A(0,1) = NonDiagonal;
+        A(n-1,n-1) = Diagonal + wr_2*rho(n)*rho(n) + 1.0/rho(n); A(n-1, n-2) = NonDiagonal;
 
         for (int i = 1; i < n-1; i++){
-            A(i,i) = Diagonal + wr_2*rho(i)*rho(i) + 1.0/rho(i);
+            A(i,i) = Diagonal + wr_2*rho(i+1)*rho(i+1) + 1.0/rho(i+1);
             A(i,i-1) = NonDiagonal;
             A(i,i+1) = NonDiagonal;
 
