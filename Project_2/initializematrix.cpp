@@ -17,6 +17,10 @@ mat Identity(int n){
 }
 
 mat Toeplitz(int n, double rho_max, string method, double wr){
+    if (rho_max != 1.0 && method == "buckling"){
+        cout << "You inserted rho_max =/= 1.0 for this method. Setting it to rho_max = 1.0\n";
+        rho_max = 1.0;
+    }
 
     mat A = zeros<mat>(n,n);
 
@@ -25,6 +29,7 @@ mat Toeplitz(int n, double rho_max, string method, double wr){
     rho(0) = 0.0;
     // End point which is approximated to infinity
     rho(n) = rho_max;
+
 
     // Calculating the step size
     double h = (rho(n) - rho(0))/ (double) n;
@@ -44,6 +49,7 @@ mat Toeplitz(int n, double rho_max, string method, double wr){
 
 
     if (method == "buckling" ) {
+
 
         cout << "Running method 1" << endl;
 
