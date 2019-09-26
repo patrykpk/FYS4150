@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include <armadillo>
+#include <string>
 
 using namespace arma;
+using namespace std;
 
-mat Toeplitz(int n, double h);
 mat Identity(int n);
-
+mat Toeplitz(int n, double rho_max, string method, double wr);
 #endif // INITIALIZEMATRIX_H
