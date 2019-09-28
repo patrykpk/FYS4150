@@ -88,12 +88,21 @@ argument is the frequency wr" << endl;
 
     vec Eigenvalue = Eigenvalues(V,n); //Extracting the diagonal elements from matrix (Eigenvalues) Found in functions.cpp
     cout << "Eigenvalues: (Computed)\n";
-    for (int i = 0; i<5; i++){
+    for (int i = 0; i<4; i++){
         cout << fixed << setprecision(4) << Eigenvalue(i) << endl;
     }
 
+
     fileout = method + "_";
-    string Add_String = to_string(n) + ".txt";
+    string Add_String;
+    if (method == "buckling"){
+        Add_String = to_string(n) + ".txt";
+    }
+    else if (method == "qdot1" || method == "qdot2") {
+
+        Add_String = to_string(n) + ".txt";
+    }
+    //string Add_String = to_string(n) + ".txt";
     fileout.append(Add_String);
 
 
@@ -104,7 +113,7 @@ argument is the frequency wr" << endl;
     ofile << "Tolerance used: " << tolerance << endl;
     if (method == "buckling"){
         vec Analytical = Analytical_Eigen(n);
-        ofile << "Rho_max: " << rho_max << "\n\n";
+
 
 
 
@@ -126,12 +135,13 @@ argument is the frequency wr" << endl;
         ofile << "Rho_max: " << rho_max << "\n\n";
         vec Analytical;
         Analytical << 3 << 7 << 11 << 15 << endr;
-        ofile << "|     Analytical      |       Computed        |       Relative Error      |\n";
+        ofile << "|     Analytical      |       Computed        |       Absolute Error      |\n";
         for (int i = 0; i < Analytical.size(); i++){
-            double RelativeError = (fabs((Analytical(i)-Eigenvalue(i))/Analytical(i)));
+            //double RelativeError = (fabs((Analytical(i)-Eigenvalue(i))/Analytical(i)));
+            double Check_Leading_Digits = fabs(Analytical(i)-Eigenvalue(i));
             ofile << setw(20) << setprecision(8) << Analytical(i);
             ofile << setw(20) << setprecision(8) << Eigenvalue(i);
-            ofile << setw(20) << setprecision(4) << RelativeError << endl;
+            ofile << setw(20) << setprecision(4) << Check_Leading_Digits << endl;
         }
 
     }
@@ -143,18 +153,4 @@ argument is the frequency wr" << endl;
 
     }
     ofile.close();
-
-    //cout << iterations << endl;
-
-    //cout << V << endl;
-
-    /*
-    cout << "K-value: " << k << endl;
-    cout << "L-value: " << l << endl;
-    */
-
-    //cout << B.n_rows;
-
-
-    //cout << (B) << endl;
 }
