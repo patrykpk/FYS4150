@@ -1,0 +1,18 @@
+Method used: buckling
+Dimension: 10
+Tolerance used: 1.00000E-10
+Number of iterations for Jacobi: 152
+Time used for Jacobi: 0.00034600000
+Time used for Armadillo: 4.0000000E-05
+
+|      Analytical        |       Computed        |   Relative Error:   
+           8.1014053           8.1014053           2.631E-15
+           31.749293           31.749293           2.238E-16
+           69.027853           69.027853           1.029E-15
+           116.91700           116.91700           2.431E-16
+           171.53703           171.53703           1.657E-16
+           228.46297           228.46297           3.732E-16
+           283.08300           283.08300           2.008E-16
+           330.97215           330.97215           5.152E-16
+           368.25071           368.25071           1.544E-16
+           391.89859           391.89859           4.351E-16
