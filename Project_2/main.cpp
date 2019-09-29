@@ -145,8 +145,8 @@ argument is the frequency wr" << endl;
 
     }
     else if (method == "qdot2") {
-        ofile << "Rho_max: " << rho_max;;
-        ofile << "Frequency wr: " << wr << "\n";
+        ofile << "Rho_max: " << rho_max << endl;
+        ofile << "Frequency wr: " << wr << endl;
         ofile << "Groundstate Eigenvalue: " << setprecision(8) << Eigenvalue(0) << endl;
     }
     ofile.close();
