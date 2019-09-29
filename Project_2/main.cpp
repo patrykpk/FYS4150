@@ -95,8 +95,12 @@ argument is the frequency wr" << endl;
 
     fileout = method + "_";
     string Add_String;
-    Add_String = to_string(n) + ".txt";
-
+    if (method == "buckling" || method == "qdot1"){
+        Add_String = to_string(n) + ".txt";
+    }
+    else if (method == "qdot2"){
+        Add_String = to_string(n) + "_rho_max_" + to_string(int(rho_max)) + "_wr_" + to_string(wr) + ".txt";
+    }
     //string Add_String = to_string(n) + ".txt";
     fileout.append(Add_String);
 
@@ -140,8 +144,6 @@ argument is the frequency wr" << endl;
         ofile << "Rho_max: " << rho_max;;
         ofile << "Frequency wr: " << wr << "\n";
         ofile << "Groundstate Eigenvalue: " << setprecision(8) << Eigenvalue(0) << endl;
-
-
     }
     ofile.close();
 }
