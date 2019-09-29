@@ -95,13 +95,8 @@ argument is the frequency wr" << endl;
 
     fileout = method + "_";
     string Add_String;
-    if (method == "buckling"){
-        Add_String = to_string(n) + ".txt";
-    }
-    else if (method == "qdot1" || method == "qdot2") {
+    Add_String = to_string(n) + ".txt";
 
-        Add_String = to_string(n) + ".txt";
-    }
     //string Add_String = to_string(n) + ".txt";
     fileout.append(Add_String);
 
@@ -113,10 +108,6 @@ argument is the frequency wr" << endl;
     ofile << "Tolerance used: " << tolerance << endl;
     if (method == "buckling"){
         vec Analytical = Analytical_Eigen(n);
-
-
-
-
 
         ofile << setw(10) << setprecision(4) << "Number of iterations for Jacobi: " << iterations << endl;
         ofile << setw(10) << setprecision(8) << "Time used for Jacobi: " << Jacobi_Time << endl;
@@ -147,9 +138,9 @@ argument is the frequency wr" << endl;
     }
     else if (method == "qdot2") {
         ofile << "Rho_max: " << rho_max;;
-        ofile << "Frequency wr: " << wr << "\n\n";
-        ofile << "Computed Eigenvalues: \n";
-        ofile << setw(20) << setprecision(8) << Eigenvalue;
+        ofile << "Frequency wr: " << wr << "\n";
+        ofile << "Groundstate Eigenvalue: " << setprecision(8) << Eigenvalue(0) << endl;
+
 
     }
     ofile.close();
