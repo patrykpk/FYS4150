@@ -1,0 +1,6 @@
+Method used: qdot2
+Dimension: 500
+Tolerance used: 1.00000E-10
+Rho_max: 30.0000
+Frequency wr: 0.0100000
+Groundstate Eigenvalue: 0.10861300
