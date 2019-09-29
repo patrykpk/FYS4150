@@ -1,0 +1,10 @@
+Method used: qdot1
+Dimension: 175
+Tolerance used: 1.00000E-10
+Rho_max: 5.50000
+
+|     Analytical      |       Computed        |       Absolute Error      |
+           3.0000000           2.9996913           0.0003087
+           7.0000000           6.9984563            0.001544
+           11.000000           10.996235            0.003765
+           15.000000           14.993157            0.006843
