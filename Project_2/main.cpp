@@ -99,9 +99,13 @@ argument is the frequency wr" << endl;
         Add_String = to_string(n) + ".txt";
     }
     else if (method == "qdot2"){
-        Add_String = to_string(n) + "_rho_max_" + to_string(int(rho_max)) + "_wr_" + to_string(wr) + ".txt";
+        if (rho_max < 10){
+            Add_String = to_string(n) + "_rho_max_" + "0" + to_string(int(rho_max)) + "_wr_" + to_string(wr) + ".txt";
+        }
+        else {
+            Add_String = to_string(n) + "_rho_max_" + to_string(int(rho_max)) + "_wr_" + to_string(wr) + ".txt";
+        }
     }
-    //string Add_String = to_string(n) + ".txt";
     fileout.append(Add_String);
 
 
