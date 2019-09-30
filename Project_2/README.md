@@ -43,10 +43,15 @@ patrykpk$ ./Project_2.exe 100 5.5 qdot1
 
 **QtCreator:**  
 **Command line arguments:** 100 5.5 qdot1
+
+NOT DONE!
  
 # Python script:
 
-Saving :floppy_disk:
+Saving :floppy_disk:  
+Layout that has to be fulfilled in order for the Python file to work properly.
+
+NOT DONE!
 
 :file_folder:Project_2   
 ├:file_folder:C++ Scripts   
