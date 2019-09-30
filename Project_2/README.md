@@ -9,18 +9,18 @@ This file contains a guide on how the programs should be run without any problem
 
 All of the C++ scripts are contained in the folder called **"C++ Scripts"** and the Python file **``Read_File_Project_2.py``** is found outside of this folder. 
 
-> **Note:** QtCreator creates seperate build folder after compiling the C++ files.
+> :exclamation: **Note:** QtCreator creates seperate build folder after compiling the C++ files.
 
 # C++ Scripts:
-### Compiling
+### Compiling :link:
 Inside the folder **"C++ Scripts"** there are two **``main``** files that have to be compiled separetely. One of them being **``main.cpp``** and the other one being **``test.cpp``**.
 
 In order to compile **``main.cpp``**, the other C++ files **``Jacobi.cpp``**, **``initializematrix.cpp``** and **``functions.cpp``** have to be included during compilation with their corresponding header files located in the same folder. 
 
 Compiling **``test.cpp``** requires the same C++ files as **``main.cpp``** during compilation. That means that **``Jacobi.cpp``**, **``initializematrix.cpp``** and **``functions.cpp``** have to be included when compiling **``test.cpp``**. In addition the **``catch.hpp``** header file has to be located in the same folder when compiling.
-> **Note:** When compiling these files make sure that the Armadillo library is present, which again requires you having LAPACK and LBLAS. 
+> :exclamation: **Note:** When compiling these files make sure that the Armadillo library is present, which again requires you having LAPACK and LBLAS. 
 
-### Running
+### Running :computer:
 ***Test-Function***  
 Running the compiled and linked **``test.cpp``** file is rather simple and doesn't require any specific input. Let's assume  that the executable file produced by compiling and linking is **``test.exe``**. This file can be run in the terminal.
 
@@ -45,6 +45,8 @@ patrykpk$ ./Project_2.exe 100 5.5 qdot1
 **Command line arguments:** 100 5.5 qdot1
  
 # Python script:
+
+Saving :floppy_disk:
 
 :file_folder:Project_2   
 ├:file_folder:C++ Scripts   
