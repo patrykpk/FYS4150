@@ -22,10 +22,10 @@ Compiling **``test.cpp``** requires the same C++ files as **``main.cpp``** durin
 
 ### Running :computer:
 ***Test-Function***  
-Running the compiled and linked **``test.cpp``** file is rather simple and doesn't require any specific input. Let's assume  that the executable file produced by compiling and linking is **``test.exe``**. This file can be run in the terminal.
+Running the compiled and linked **``test.cpp``** file is rather simple and doesn't require any specific input. Let's assume  that the executable file produced by compiling and linking is **``test.exe``**. This file can be run in the terminal the following way.
 
 **An example of running the compiled file (Terminal):**  
-patrykpk$ ./test.exe
+![Patrykpk_Github](https://user-images.githubusercontent.com/54407312/65923269-a2842d80-e3e8-11e9-8e24-b1448ab35a89.png) ./test.exe
 
 **Result from terminal:**  
 INSERT OUTPUT HERE
@@ -39,7 +39,7 @@ First command line argument is the dimension of the matrix that we want to work 
 //This file consists of 
 
 **An example of running the compiled file (Terminal):**  
-patrykpk$ ./Project_2.exe 100 5.5 qdot1
+![Patrykpk_Github](https://user-images.githubusercontent.com/54407312/65923269-a2842d80-e3e8-11e9-8e24-b1448ab35a89.png) ./Project_2.exe 100 5.5 qdot1
 
 **QtCreator:**  
 **Command line arguments:** 100 5.5 qdot1
