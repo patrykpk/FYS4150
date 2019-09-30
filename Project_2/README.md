@@ -1,7 +1,7 @@
 # Reproducibility Guide :closed_book:
 
 
-## Project 2: Eigenvalue Problem Schrödinger equation
+## Project 2: Jacobi's method for solving eigenvalue problems
 
 Reproducing the results found in this directory is essential and this file is supposed
 to make it possible for another person to verify that these results are indeed correct.
