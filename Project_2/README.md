@@ -21,22 +21,22 @@ Compiling **``test.cpp``** requires the same C++ files as **``main.cpp``** durin
 > :exclamation: **Note:** When compiling these files make sure that the Armadillo library is present, which again requires you having LAPACK and LBLAS. 
 
 ### Running :computer:
-***Test-Function***  
+***Test-Function - (test.cpp)***  
 Running the compiled and linked **``test.cpp``** file is rather simple and doesn't require any specific input. Let's assume  that the executable file produced by compiling and linking is **``test.exe``**. This file can be run in the terminal the following way.
 
 **An example of running the compiled file (Terminal):**  
 ![Patrykpk_Github](https://user-images.githubusercontent.com/54407312/65923538-9c428100-e3e9-11e9-9922-a30f84467974.png)
 
 **Result from terminal:**  
-INSERT OUTPUT HERE
+>Running Buckling  
+>\====================================================  
+>All tests passed (51 assertions in 2 test cases)
 ___
-***Solving eigenvalue problem***  
+***Solving eigenvalue problem - (main.cpp)***  
 Running the compiled and linked **``main.cpp``** file requires some command line arguments in order to execute. There are in total 4 command line arguments that can be inserted, with 3 of them being mandatory for the first two methods and 4 for the last method.
 
 First command line argument is the dimension of the matrix that we want to work with and must be given as an integer. Second command line argument is <img src="https://latex.codecogs.com/gif.latex?\rho_{max}"/>. Third command line argument is the method that will be used, for this input only three alternatives are accepted. The input here has to be one of the following **[ *buckling, qdot1, qdot2* ]** written the exact way as shown in the brackets. Fourth and last input is only required if **qdot2** is used and represents the frequency <img src="https://latex.codecogs.com/gif.latex?\omega_{r}"/>. Assuming that the executable file produced after compiling and linking is **``Project_2.exe``**, then this file could be run the following way.
 
- 
-//This file consists of 
 
 **An example of running the compiled file (Terminal):**  
 ![Patrykpk_Github_2](https://user-images.githubusercontent.com/54407312/65923602-cf851000-e3e9-11e9-8857-e4098b02beec.png)
@@ -51,19 +51,22 @@ First command line argument is the dimension of the matrix that we want to work 
 > **5.5** - <img src="https://latex.codecogs.com/gif.latex?\rho_{max}"/>  
 > **qdot1** - Method
 
-**Result from terminal:**
+**Result from terminal:**  
+>Running Qdot1  
+>Number of iterations for Jacobi: 17578  
+>Eigenvalues: (Computed)  
+>2.9991  
+>6.9953  
+>10.9885  
+>14.9787  
 
 
-NOT DONE!
-
-Running this file also outputs a **``.txt``** file based on the method used and other input parameters. This file contains a lot more information compared to the output from terminal and also higher precision for the values evaluated.
+Running this file also outputs a **``.txt``** file based on the method used and other input parameters. This file contains a lot more information compared to the output from terminal and also higher precision for the values evaluated. 
  
 # Python script:
-
+Running the Python script requires a specific directory layout 
 Saving :floppy_disk:  
-Layout that has to be fulfilled in order for the Python file to work properly.
-
-NOT DONE!
+Necessary layout for the directories is a prerequisite for the Python file to work properly.
 
 :file_folder:Project_2   
 ├:file_folder:C++ Scripts   
