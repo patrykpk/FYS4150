@@ -132,7 +132,7 @@ void OutputToFileMC(double a, double b, int n, string outfilename){
         double Variance_BF;
         double Sum_Sigma_BF;
         double Standard_Deviation_BF;
-        MonteCarloBF(a, b, n, int_MonteCarloBF, MonteCarloBF_time, Variance_BF, Sum_Sigma_BF, Standard_Deviation_BF, WriteToFile)
+        MonteCarloBF(a, b, n, int_MonteCarloBF, MonteCarloBF_time, Variance_BF, Sum_Sigma_BF, Standard_Deviation_BF, WriteToFile);
 
 
         double int_MonteCarloIS;
