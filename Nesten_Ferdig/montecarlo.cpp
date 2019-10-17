@@ -138,38 +138,39 @@ void OutputToFileMC(double a, double b, int n, string outfilename){
     // Open file and write results to file:
     ofile.open(outfilename);
     ofile << setiosflags(ios::showpoint | ios::uppercase);
-    ofile << "|   Power of N:  |  Monte CarloBF:  | CPU-time MonteCarloBF: |   Standard DeviationBF:   |  Monte CarloIS:    |  CPU-time MonteCarloIS: |  Standard DeviationIS:   |   Exact value:   |" << endl;
+    ofile << "|     N:     |  Monte CarloBF:  | CPU-time MonteCarloBF: |   Standard DeviationBF:   |  Monte CarloIS:    |  CPU-time MonteCarloIS: |  Standard DeviationIS:   |   Exact value:   |" << endl;
     ofile << "|                |                  |                        |                           |                    |                         |                          |                  |" << endl;
 
-    for(int N = 1; N <= n ; N++){
-
+    for(int N = 2; N <= n ; N++){
         int h = pow(10,N);
 
-        cout << N << endl;
-
-        double int_MonteCarloBF = 0;
-        double MonteCarloBF_time = 0;
-        double Standard_Deviation_BF = 0;
-        MonteCarloBF(a, b, h, int_MonteCarloBF, MonteCarloBF_time, Standard_Deviation_BF, WriteToFile);
-
-
-        double int_MonteCarloIS = 0;
-        double MonteCarloIS_time = 0;
-        double Standard_Deviation_IS = 0;
-        MonteCarlo_IS(h, int_MonteCarloIS, MonteCarloIS_time, Standard_Deviation_IS, WriteToFile);
-
-        //GQ_legendre(a, b, N, int_legendre, Legendre_time, WriteToFile);
+        for (int p = 2; p <= 10; p++){
+            int Values = h*p*0.10;
+            //cout << "Current value of N: " << Values << endl;
+            double int_MonteCarloBF = 0;
+            double MonteCarloBF_time = 0;
+            double Standard_Deviation_BF = 0;
+            MonteCarloBF(a, b, Values, int_MonteCarloBF, MonteCarloBF_time, Standard_Deviation_BF, WriteToFile);
 
 
-        //GQ_laguerre(N,PI, int_laguerre, Laguerre_time, WriteToFile);
-        ofile << setw(10) << N;
-        ofile << setw(18) << setprecision(8) << int_MonteCarloBF;
-        ofile << setw(20) << setprecision(8) << MonteCarloBF_time;
-        ofile << setw(23) << setprecision(8) << Standard_Deviation_BF;
-        ofile << setw(22) << setprecision(8) << int_MonteCarloIS;
-        ofile << setw(20) << setprecision(8) << MonteCarloIS_time;
-        ofile << setw(23) << setprecision(8) << Standard_Deviation_IS;
-        ofile << setw(22) << setprecision(8) << Exact_value << endl;
+            double int_MonteCarloIS = 0;
+            double MonteCarloIS_time = 0;
+            double Standard_Deviation_IS = 0;
+            MonteCarlo_IS(Values, int_MonteCarloIS, MonteCarloIS_time, Standard_Deviation_IS, WriteToFile);
+
+            //GQ_legendre(a, b, N, int_legendre, Legendre_time, WriteToFile);
+
+
+            //GQ_laguerre(N,PI, int_laguerre, Laguerre_time, WriteToFile);
+            ofile << setw(10) << Values;
+            ofile << setw(18) << setprecision(8) << int_MonteCarloBF;
+            ofile << setw(20) << setprecision(8) << MonteCarloBF_time;
+            ofile << setw(23) << setprecision(8) << Standard_Deviation_BF;
+            ofile << setw(22) << setprecision(8) << int_MonteCarloIS;
+            ofile << setw(20) << setprecision(8) << MonteCarloIS_time;
+            ofile << setw(23) << setprecision(8) << Standard_Deviation_IS;
+            ofile << setw(22) << setprecision(8) << Exact_value << endl;
+        }
 
 
 
