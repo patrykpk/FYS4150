@@ -4,3 +4,4 @@
 #endif // MONTE_CARLO_H
 
 void MC(double a, double b, int N);
+void Test(int N);

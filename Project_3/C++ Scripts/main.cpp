@@ -4,9 +4,13 @@
 #include <iomanip>  //setiosflags, setw, setprecision
 //#include <stdio.h>
 //#include <stdlib.h>
+#include <armadillo>
 
-#include "legendre.h"
-#include "repulsion_function.h"
+using namespace arma;
+
+#include "Gauss_Quadrature.h"
+#include "Coordinates.h"
+#include "Monte_Carlo.h"
 
 using namespace std;
 
@@ -24,6 +28,8 @@ int main()
     double *w = new double [n];
 
     gauleg(a, b, x, w, n);
+
+    //double Arma_Random = randu(1);
 
 
     double int_gauss = 0.0;
@@ -47,6 +53,23 @@ int main()
     cout  << setiosflags(ios::showpoint | ios::uppercase);
     cout << "Gaussian-Legendre quad = "<< setw(20) << setprecision(15)  << int_gauss << endl;
 
+
+    cout << "Monte carlo methods enter:" << endl;
+    int N;
+    double A, B;
+    cout << "Read in the number of integration points" << endl;
+    cin >> N;
+    cout << "Read in integration limits" << endl;
+    cin >> A >> B;
+
+    MC(A, B, N);
+
+
+    cout << "Test of random number generator ran0  " << endl;
+    int M;
+    cout << "Read in the number of integration points" << endl;
+    cin >> M;
+    Test(M);
 }  // end of main program
 
 

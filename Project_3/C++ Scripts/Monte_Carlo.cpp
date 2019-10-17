@@ -18,6 +18,7 @@ double ran0(long *idum);
 double ran1(long *idum);
 double ran2(long *idum);
 double ran3(long *idum);
+void Test(int N);
 
 void MC(double a, double b, int N)
 {
@@ -369,3 +370,18 @@ double ran3(long *idum)
 #undef FAC
 
 // End: function ran3()
+
+void Test(int N){
+    double x, fx;
+    double exact = 0.5;
+    long idum = -1;
+
+    fx = 0;
+    for (int i =0; i <= N; i++){
+        x = ran0(&idum);
+        fx += x;
+    }
+    fx = fx/(double(N));
+    cout << "Exact value               " << exact << endl;
+    cout << "Integral of x using ran0  " << fx << endl;
+}
