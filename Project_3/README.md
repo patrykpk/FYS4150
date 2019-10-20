@@ -1,19 +1,19 @@
 # Reproducibility Guide :closed_book:
 
 
-## Project 2: Jacobi's method for solving eigenvalue problems
+## Project 3: Numerical Integration
 
 Reproducing the results found in this directory is essential and this file is supposed
 to make it possible for another person to verify that these results are indeed correct.
 This file contains a guide on how the programs should be run without any problems and/or errors occuring.
 
-All of the C++ scripts are contained in the folder called **":file_folder:C++ Scripts"** and the Python file **``Read_File_Project_2.py``** is found outside of this folder. 
+All of the C++ scripts are contained in the folder called **":file_folder:C++ Scripts"** and the Python scripts are contained in **":file_folder:Python Scripts"**. These directories are found within  **":file_folder:Scripts"**
 
 > :exclamation: **Note:** QtCreator creates seperate build folder after compiling the C++ files.
 
 # C++ Scripts:
 ### Compiling :link:
-Inside the folder **":file_folder:C++ Scripts"** there are two **``main``** files that have to be compiled separetely. One of them being **``main.cpp``** and the other one being **``test.cpp``**.
+Inside the folder **":file_folder:C++ Scripts"** there are three **``main``** files that have to be compiled separetely. One of them being **``main.cpp``**, second one being **``test.cpp``** and the third one being **``MPI_main.cpp``**.
 
 In order to compile **``main.cpp``**, the other C++ files **``Jacobi.cpp``**, **``initializematrix.cpp``** and **``functions.cpp``** have to be included during compilation with their corresponding header files located in the same folder. 
 
