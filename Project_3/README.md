@@ -22,12 +22,13 @@ Compiling **``test.cpp``** requires **``lib.cpp``** and the corresponding header
 Compiling **``MPI_main.cpp``** is more demanding and requires OpenMPI. C++ files **``lib.cpp``**, **``MonteCarlo.cpp``**, **``CoordinateSystem.cpp``** and **``GaussianQuadrature.cpp``** have to be included in the same folder with their corresponding header files. During this **Project** compiling with OpenMPI in QtCreator didn't work and the compiling was thus done in the Terminal.
 
 **An example of compiling and linking**  
-![Project_3_Compile_MPI](https://user-images.githubusercontent.com/54407312/67159388-23797980-f344-11e9-9eb9-fde14aacc733.png)
+![Patrykpk_Github_MPI_Compile](https://user-images.githubusercontent.com/54407312/67162693-bdeab480-f366-11e9-872d-bc152c512806.png)
+
 
 
 > :exclamation: **Note:** Errors occured when implementing Parallelization in the main file, so we had to split into another file. That's the reason why Parallelization is done in a seperate file **``MPI_main.cpp``**. When compiling **``MPI_main.cpp``** make sure that you have OpenMPI installed.
 
-
+___
 
 ### Running :computer:   
 ***Numerical Integration - (main.cpp)***  
@@ -65,6 +66,10 @@ Running the compiled and linked **``test.cpp``** file is rather simple and doesn
 > All tests passed (9 assertions in 2 test cases)
 
 ___
+
+***Parallelized Monte Carlo - (MPI_main.cpp)***
+
+![Patrykpk_Github_MPI_Run](https://user-images.githubusercontent.com/54407312/67162704-e70b4500-f366-11e9-9527-6877b6bf5da5.png)
 
  
 # Python scripts:
