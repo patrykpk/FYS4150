@@ -13,12 +13,21 @@ All of the C++ scripts are contained in the folder called **":file_folder:C++ Sc
 
 # C++ Scripts:
 ### Compiling :link:
-Inside the folder **":file_folder:C++ Scripts"** there are three **``main``** files that have to be compiled separetely. One of them being **``main.cpp``**, second one being **``test.cpp``** and the third one being **``MPI_main.cpp``**.
+Inside the folder **":file_folder:C++ Scripts"** there are three **``main``** files that have to be compiled separetely. One of them being **``main.cpp``**, second one being **``test.cpp``** and the third one being **``MPI_main.cpp``**. Each of them is contained in their seperate directory **":file_folder:Main_Program"**, **":file_folder:Test_Function"** and **":file_folder:Parallelized"** respecitvely with the required source and header files for compiling the scripts.
 
-In order to compile **``main.cpp``**, the other C++ files **``Jacobi.cpp``**, **``initializematrix.cpp``** and **``functions.cpp``** have to be included during compilation with their corresponding header files located in the same folder. 
+In order to compile **``main.cpp``**, the other C++ files **``lib.cpp``**, **``MonteCarlo.cpp``**, **``CoordinateSystem.cpp``** and **``GaussianQuadrature.cpp``** have to be included during compilation with their corresponding header files located in the same folder. 
 
-Compiling **``test.cpp``** requires the same C++ files as **``main.cpp``** during compilation. That means that **``Jacobi.cpp``**, **``initializematrix.cpp``** and **``functions.cpp``** have to be included when compiling **``test.cpp``**. In addition the **``catch.hpp``** header file has to be located in the same folder when compiling.
-> :exclamation: **Note:** When compiling these files make sure that the Armadillo library is present, which again requires you having LAPACK and LBLAS. 
+Compiling **``test.cpp``** requires **``lib.cpp``** and the corresponding header file during compilation. In addition the **``catch.hpp``** header file has to be located in the same folder when compiling.
+
+Compiling **``MPI_main.cpp``** is more demanding and requires OpenMPI. C++ files **``lib.cpp``**, **``MonteCarlo.cpp``**, **``CoordinateSystem.cpp``** and **``GaussianQuadrature.cpp``** have to be included in the same folder with their corresponding header files. During this **Project** compiling with OpenMPI in QtCreator didn't work and the compiling was thus done in the Terminal.
+
+**An example of compiling and linking**  
+![Project_3_Compile_MPI](https://user-images.githubusercontent.com/54407312/67159388-23797980-f344-11e9-9eb9-fde14aacc733.png)
+
+
+> :exclamation: **Note:** Errors occured when implementing Parallelization in the main file, so we had to split into another file. That's the reason why Parallelization is done in a seperate file **``MPI_main.cpp``**. When compiling **``MPI_main.cpp``** make sure that you have OpenMPI installed.
+
+
 
 ### Running :computer:   
 ***Test-Function - (test.cpp)***  
