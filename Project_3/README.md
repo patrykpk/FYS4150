@@ -71,6 +71,15 @@ ___
 
 ![Patrykpk_Github_MPI_Run](https://user-images.githubusercontent.com/54407312/67162704-e70b4500-f366-11e9-9527-6877b6bf5da5.png)
 
+NOT DONE 
+
+
+**":file_folder:Project_3"**
+├ **":file_folder:Scripts"**
+**│** **└** **":file_folder:C++ Scripts"**
+**│** **└** **":file_folder:Python Scripts"**
+├ **":file_folder:Results"**
+
  
 # Python scripts:
 Necessary layout for the directories is a prerequisite for the Python file to work properly. <img align ="right" width="205" height="171" src="https://user-images.githubusercontent.com/54407312/65968110-f9c6e400-e462-11e9-99b4-a0e219a32f85.png"> The layout is shown to the right, where the **``Read_File_Project_2.py``** file is placed outside all the directories. Folder called **":file_folder:Results"** must contain subfolders  **":file_folder:Buckling_beam"**,   
