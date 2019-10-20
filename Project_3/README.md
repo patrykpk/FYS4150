@@ -31,35 +31,24 @@ Compiling **``MPI_main.cpp``** is more demanding and requires OpenMPI. C++ files
 
 ### Running :computer:   
 ***Test-Function - (test.cpp)***  
-Running the compiled and linked **``test.cpp``** file is rather simple and doesn't require any specific input. Let's assume  that the executable file produced by compiling and linking is **``test.exe``**. This file can be run in the terminal the following way.
+Running the compiled and linked **``test.cpp``** file is rather simple and doesn't require any specific input. Let's assume  that the executable file produced by compiling and linking is **``test``**. This file can be run in the terminal the following way.
 
 **An example of running the compiled file (Terminal):**  
-![Patrykpk_Github](https://user-images.githubusercontent.com/54407312/65923538-9c428100-e3e9-11e9-9922-a30f84467974.png)
+![Test_Running](https://user-images.githubusercontent.com/54407312/67162027-91339e80-f360-11e9-948c-8c99f60bb6ee.png)
 
 **Result from terminal:**  
->Running Buckling  
->\====================================================  
->All tests passed (51 assertions in 2 test cases)
+> ====================================================  
+> All tests passed (9 assertions in 2 test cases)
+
 ___
-***Solving eigenvalue problem - (main.cpp)***  
-Running the compiled and linked **``main.cpp``** file requires some command line arguments in order to execute. There are in total 4 command line arguments that can be inserted, with 3 of them being mandatory for the first two methods and 4 for the last method.
+***Numerical Integration - (main.cpp)***  
+Running the compiled and linked **``main.cpp``** file doesn't require any command line arguments in order to execute. Everything is done through the terminal where you simply choose what you want to do based on the choices you're given.
 
-First command line argument is the dimension of the matrix
-that we want to work with and must be given as an integer. Second command line argument is <img src="https://latex.codecogs.com/gif.latex?\rho_{max}"/>. Third command line argument is the method that will be used, for this input only three alternatives are accepted. The input here has to be one of the following **[ *buckling, qdot1, qdot2* ]** written the exact way as shown in the brackets. Fourth and last input is only required if **qdot2** is used and represents the frequency <img src="https://latex.codecogs.com/gif.latex?\omega_{r}"/>. Assuming that the executable file produced after compiling and linking is **``Project_2.exe``**, then this file could be run the following way.
-
+Assuming that the executable file produced after compiling and linking is **``Project_3``**, then this file could be run the following way.
 
 **An example of running the compiled file (Terminal):**  
-![Patrykpk_Github_2](https://user-images.githubusercontent.com/54407312/65923602-cf851000-e3e9-11e9-8857-e4098b02beec.png)
+![Patrykpk_Github_3](https://user-images.githubusercontent.com/54407312/67162195-1d929100-f362-11e9-8ad3-f802f620c302.png)
 
-
-**QtCreator:**  
-**Command line arguments:** 100 5.5 qdot1  
-
-**Input:**
-> **Project_2.exe** - Executable file from compiling and linking  
-> **100** - Dimension of the matrix (n)  
-> **5.5** - <img src="https://latex.codecogs.com/gif.latex?\rho_{max}"/>  
-> **qdot1** - Method
 
 **Result from terminal:**  
 >Running Qdot1  
