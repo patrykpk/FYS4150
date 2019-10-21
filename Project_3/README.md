@@ -9,7 +9,8 @@ This file contains a guide on how the programs should be run without any problem
 
 All of the C++ scripts are contained in the folder called **":file_folder:C++ Scripts"** and the Python scripts are contained in another directory **":file_folder:Python Scripts"**. These directories are found within  **":file_folder:Scripts"**
 
-> :exclamation: **Note:** QtCreator creates seperate build folder after compiling the C++ files.
+> :exclamation: **Note:** QtCreator creates seperate build folder after compiling the C++ files.  
+> :exclamation: **Another Note:** Two of the files used in this project haven't been developed by us. Those files are **``catch.hpp``** and **``lib.cpp``**.
 
 # C++ Scripts:
 ### Compiling :link:
