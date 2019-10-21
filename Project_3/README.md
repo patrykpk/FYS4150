@@ -13,7 +13,7 @@ All of the C++ scripts are contained in the folder called **":file_folder:C++ Sc
 
 # C++ Scripts:
 ### Compiling :link:
-Inside the folder **":file_folder:C++ Scripts"** there are three **``main``** files that have to be compiled separetely. One of them being **``main.cpp``**, second one being **``test.cpp``** and the third one being **``MPI_main.cpp``**. Each of them is contained in their seperate directory **":file_folder:Main_Program"**, **":file_folder:Unit_Test"** and **":file_folder:Parallelized"** respecitvely with the required source and header files for compiling the scripts.
+Inside the folder **":file_folder:C++ Scripts"** there are three **``main``** files that have to be compiled separetely. One of them being **``main.cpp``**, second one being **``test.cpp``** and the third one being **``MPI_main.cpp``**. Each of them is contained in their seperate directory **":file_folder:Main_Program"**, **":file_folder:Unit_Test"** and **":file_folder:Parallelization"** respecitvely with the required source and header files for compiling the scripts.
 
 In order to compile **``main.cpp``**, the other C++ files **``lib.cpp``**, **``MonteCarlo.cpp``**, **``CoordinateSystem.cpp``** and **``GaussianQuadrature.cpp``** have to be included during compilation with their corresponding header files located in the same folder. 
 
