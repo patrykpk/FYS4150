@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 from matplotlib import rc, rcParams
+import os
 
 rc('text', usetex=True)
 rc('font', **{'family': 'serif', 'serif': ['Random']})
@@ -98,6 +99,7 @@ plt.legend(loc='upper right', prop={"size": 10})
 plt.xlabel("Number of iterations [N]    ", fontsize=14)
 plt.ylabel('Estimated solution of integral', fontsize=14)
 plt.title("Convergency of Legendre $\&$ Laguerre", fontsize=15)
+plt.savefig(path+"GQ_Integral_Even_Odd")
 plt.tight_layout()
 
 plt.figure(2)
@@ -108,6 +110,7 @@ plt.legend(loc='upper right', prop={"size": 10})
 plt.xlabel("Number of iterations [N]", fontsize=14)
 plt.ylabel('Estimated solution of integral', fontsize=14)
 plt.title("Convergency of Legendre $\&$ Laguerre", fontsize=15)
+plt.savefig(path+"GQ_Integral")
 plt.tight_layout()
 
 plt.figure(3)
@@ -117,6 +120,7 @@ plt.legend(loc='upper right', prop={"size": 10})
 plt.xlabel("Number of iterations [N]", fontsize=14)
 plt.ylabel('Relative error $\epsilon$', fontsize=14)
 plt.title("Relative error [Legendre $\&$ Laguerre]", fontsize=15)
+plt.savefig(path+"GQ_Relative_Error")
 plt.tight_layout()
 
 plt.figure(4)
@@ -127,6 +131,7 @@ plt.legend(loc='upper left', prop={"size": 10})
 plt.xlabel("Number of iterations [N]", fontsize=14)
 plt.ylabel('CPU-time [s]', fontsize=14)
 plt.title("CPU-time for [Legendre $\&$ Laguerre]", fontsize=15)
+plt.savefig(path+"CPU_Time_GQ")
 plt.tight_layout()
 
 plt.figure(5)
@@ -139,5 +144,6 @@ plt.legend(loc='upper right', prop={"size": 10})
 plt.xlabel("Number of iterations [N]", fontsize=14)
 plt.ylabel('Relative error $\epsilon$', fontsize=14)
 plt.title("Relative error [Legendre $\&$ Laguerre]", fontsize=15)
+plt.savefig(path+"GQ_Relative_Error_Even_Odd")
 plt.tight_layout()
 plt.show()
