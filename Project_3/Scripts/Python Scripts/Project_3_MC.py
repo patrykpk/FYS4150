@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 from matplotlib import rc, rcParams
+import os
 
 rc('text', usetex=True)
 rc('font', **{'family': 'serif', 'serif': ['Random']})
@@ -74,6 +75,7 @@ plt.legend(loc='upper right', prop={"size": 10})
 plt.xlabel("Number of iterations [N]", fontsize=14)
 plt.ylabel('Approximated solution of integral', fontsize=14)
 plt.title("Solution based on Monte Carlo [Brute force]", fontsize=15)
+plt.savefig(path+"MC_Integral_BF")
 #plt.xlim(10000, 1000000000)
 #plt.ylim(0.035, 0.7)
 plt.tight_layout()
@@ -86,6 +88,7 @@ plt.legend(loc='upper right', prop={"size": 10})
 plt.xlabel("Number of iterations [N]", fontsize=14)
 plt.ylabel('Approximated solution of integral', fontsize=14)
 plt.title("Solution based on Monte Carlo [Importance sampling]", fontsize=15)
+plt.savefig(path+"MC_Integral_IS")
 #plt.xlim(10000, 1000000000)
 #plt.ylim(0.182, 0.215)
 plt.tight_layout()
@@ -97,7 +100,8 @@ plt.plot(N, SD_IS, linewidth=0.5, linestyle="-", label='Importance sampling')
 plt.legend(loc='upper right', prop={"size": 10})
 plt.xlabel("Number of iterations [N]", fontsize=14)
 plt.ylabel('Relative error $\epsilon$', fontsize=14)
-plt.title("Relative error [brute force $\&$ importance sampling]", fontsize=15)
+plt.title("Relative error [Brute force $\&$ Importance sampling]", fontsize=15)
+plt.savefig(path+"MC_Integral")
 #plt.xlim(10000, 1000000000)
 #plt.ylim(-0.2, 2.55)
 plt.tight_layout()
@@ -105,16 +109,13 @@ plt.tight_layout()
 
 plt.figure(4)
 
-plt.loglog(N, CPU_MC_BF, linewidth=0.5, linestyle="-", label='brute force')
+plt.loglog(N, CPU_MC_BF, linewidth=0.5, linestyle="-", label='Brute force')
 plt.loglog(N, CPU_MC_IS, linewidth=0.5, linestyle="-", label='Importance sampling')
-
-plt.loglog(N_1, CPU_4_BF, linewidth=0.5, linestyle="--", label='brute force')
-plt.loglog(N_1, CPU_4_IS, linewidth=0.5, linestyle="--", label='Importance sampling')
 plt.legend(loc='upper left', prop={"size": 10})
 plt.xlabel("Number of iterations [N]", fontsize=14)
 plt.ylabel('CPU-time [s]', fontsize=14)
-plt.title("CPU-time [brute force $\&$ importance sampling]", fontsize=15)
-
+plt.title("CPU-time [Brute force $\&$ Importance sampling]", fontsize=15)
+plt.savefig(path+"MC_CPU_Time")
 plt.tight_layout()
 
 
