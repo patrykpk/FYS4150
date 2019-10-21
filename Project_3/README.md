@@ -19,10 +19,11 @@ In order to compile **``main.cpp``**, the other C++ files **``lib.cpp``**, **``M
 
 Compiling **``test.cpp``** requires **``lib.cpp``** and the corresponding header file during compilation. In addition the **``catch.hpp``** header file has to be located in the same folder when compiling.
 
-Compiling **``MPI_main.cpp``** is more demanding and requires OpenMPI. C++ files **``lib.cpp``**, **``MonteCarlo.cpp``**, **``CoordinateSystem.cpp``** and **``GaussianQuadrature.cpp``** have to be included in the same folder with their corresponding header files. During this **Project** compiling with OpenMPI in QtCreator didn't work and the compiling was thus done in the Terminal.
+Compiling **``MPI_main.cpp``** is more demanding and requires MPI. C++ files **``lib.cpp``**, **``MonteCarlo.cpp``**, **``CoordinateSystem.cpp``** and **``GaussianQuadrature.cpp``** have to be included in the same folder with their corresponding header files. During this **Project** compiling with OpenMPI in QtCreator didn't work and the compiling was thus done in the Terminal.
 
 **An example of compiling and linking**  
-![Patrykpk_Github_MPI_Compile](https://user-images.githubusercontent.com/54407312/67162693-bdeab480-f366-11e9-872d-bc152c512806.png)
+![Patrykpk_Github_MPI_Compile](https://user-images.githubusercontent.com/54407312/67162693-bdeab480-f366-11e9-872d-bc152c512806.png)  
+![Patrykpk_Github_MPI_Compile_](https://user-images.githubusercontent.com/54407312/67190153-bde2c700-f3ef-11e9-900f-29457eca9bcd.png)
 
 
 
@@ -38,7 +39,6 @@ Assuming that the executable file produced after compiling and linking is **``Pr
 
 **An example of running the compiled file (Terminal):**  
 ![Patrykpk_Github_3](https://user-images.githubusercontent.com/54407312/67162195-1d929100-f362-11e9-8ad3-f802f620c302.png)
-
 
 **Result from terminal:**  
 >Running Qdot1  
@@ -67,18 +67,23 @@ Running the compiled and linked **``test.cpp``** file is rather simple and doesn
 
 ___
 
-***Parallelized Monte Carlo - (MPI_main.cpp)***
-
+***Parallelized Monte Carlo - (MPI_main.cpp)***  
+Running the compiled and linked **``MPI_main.cpp``** is different from the others. As we didn't get QtCreator to work with MPI the following instruction is on running the script from terminal. In order to run the compiled script there is a special way to do so with MPI, where you have to specify the amount of processes to be run simultaneously. In addition to that **``MPI_main.cpp``** requires the number of sampling points as an input in the command line.
+  
+**An example of running the compiled file (Terminal):**  
 ![Patrykpk_Github_MPI_Run](https://user-images.githubusercontent.com/54407312/67162704-e70b4500-f366-11e9-9527-6877b6bf5da5.png)
 
-NOT DONE 
+Where ./MPI is the compiled and linked file that was mentioned in the section **"Compiling"** and 1000000 is the amount of sampling points. The remaining options seen above are specific to MPI.
+
+**Result from terminal:**  
 
 
-**":file_folder:Project_3"**
-├ **":file_folder:Scripts"**
-**│** **└** **":file_folder:C++ Scripts"**
-**│** **└** **":file_folder:Python Scripts"**
-├ **":file_folder:Results"**
+
+**":file_folder:Project_3"**  
+├ **":file_folder:Scripts"**  
+**│** **└** **":file_folder:C++ Scripts"**  
+**│** **└** **":file_folder:Python Scripts"**  
+├ **":file_folder:Results"**  
 
  
 # Python scripts:
