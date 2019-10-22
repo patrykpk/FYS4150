@@ -1,7 +1,7 @@
 # Reproducibility Guide :closed_book:
 
 
-## Project 3: Numerical Integration
+## Project 3: Ground state correlation energy of the helium atom using different numerical methods
 
 Reproducing the results found in this directory is essential and this file is supposed
 to make it possible for another person to verify that these results are indeed correct.
