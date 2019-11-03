@@ -1,3 +1,3 @@
 ## THIS WORKS!
 
-<img align ="left" width="435" height="195" src="https://user-images.githubusercontent.com/54407312/68093514-a0edcf80-fe96-11e9-9739-26293bc6d9ce.gif">
+<img align ="left" width="400" height="190" src="https://user-images.githubusercontent.com/54407312/68093720-ead7b500-fe98-11e9-92e7-bdcda8e2c079.gif">
