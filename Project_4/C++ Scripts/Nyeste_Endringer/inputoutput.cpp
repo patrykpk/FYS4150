@@ -2,10 +2,11 @@
 #include "metropolis.h"
 
 
-void GenerateTableTop(ofstream& ofile, int L, int MonteCarloCycles){
+void GenerateTableTop(ofstream& ofile, int L, int MonteCarloCycles, string SpinConfig){
     ofile << setiosflags(ios::showpoint | ios::uppercase);
     ofile << "Spin Matrix: " << L << "x" << L << endl;
     ofile << "Number of Monte Carlo Cycles: " << MonteCarloCycles << endl;
+    ofile << "Spin Configuration: " << SpinConfig << endl;
     ofile << "All values are given per spin!\n";
     ofile << "╔═══════════════╤══════════════╤═══════════════╤═══════════════╤════════════════╗\n";
     ofile << "║  Temperature  │    Energy    │ Heat Capacity │ Magnetization │ Susceptibility ║" << endl;
@@ -28,11 +29,11 @@ void WriteToFileOutput(ofstream& ofile, int L, int MonteCarloCycles, double Temp
     double Mvariance = (M2average - Mabsaverage*Mabsaverage)/L/L;
 
     ofile << setiosflags(ios::showpoint | ios::uppercase);
-    ofile << "║   " << setprecision(8) << Temperature << "   ";
-    ofile << "│  "  << setprecision(8) << Eaverage/L/L << "  ";
-    ofile << "│   " << setprecision(8) << Evariance/Temperature/Temperature << "   ";
-    ofile << "│   " << setprecision(8) << Mabsaverage/L/L << "   ";
-    ofile << "│   " << setprecision(8) << Mvariance/Temperature << "    ║" << endl;
+    ofile << "║   " << fixed <<setprecision(7) << Temperature  << "   ";
+    ofile << "│  " << fixed <<setprecision(7)  << Eaverage/L/L << "  ";
+    ofile << "│   " << fixed << setprecision(7) << Evariance/Temperature/Temperature << "   ";
+    ofile << "│   " << fixed <<setprecision(7) << Mabsaverage/L/L << "   ";
+    ofile << "│   " << fixed <<setprecision(7) << Mvariance/Temperature << "    ║" << endl;
     //ofile << setw(15) << setprecision(8) << Maverage/L/L << endl;
 }
 

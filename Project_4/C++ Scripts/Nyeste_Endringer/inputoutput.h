@@ -3,7 +3,7 @@
 
 #include "metropolis.h"
 
-void GenerateTableTop(ofstream& ofile, int L, int MonteCarloCycles);
+void GenerateTableTop(ofstream& ofile, int L, int MonteCarloCycles, string SpinConfig);
 void WriteToFileOutput(ofstream& ofile, int L, int MonteCarloCycles, double Temperature, vec ExValues);
 void GenerateTableBottom(ofstream& ofile);
 
