@@ -73,7 +73,6 @@ void Metropolis(int L, mat& SpinMatrix, double& Energy, double& Magnetization, v
     }
 }
 
-
 void MonteCarloAlgorithm(ofstream& ofile, int L, double Temperature, int MonteCarloCycles, string SpinConfig, int TemperatureChoice){
     mat SpinMatrix = zeros<mat>(L,L); // Her eller i main?
     vec ExValues = zeros<vec>(5);
@@ -92,7 +91,6 @@ void MonteCarloAlgorithm(ofstream& ofile, int L, double Temperature, int MonteCa
         ExValues(0) += Energy;          ExValues(1) += Energy*Energy;
         ExValues(2) += Magnetization;   ExValues(3) += Magnetization*Magnetization;
         ExValues(4) += fabs(Magnetization);
-
     }
 
     if (TemperatureChoice == 1 or TemperatureChoice == 2){
@@ -108,25 +106,3 @@ void MonteCarloAlgorithm(ofstream& ofile, int L, double Temperature, int MonteCa
     // Algortime for å skrive til fil her
 }
 
-
-/*
-for ( double temperature = initial_temp; temperature <= final_temp; temperature+=temp_step){
-  //    initialise energy and magnetization
-  E = M = 0.;
-  // setup array for possible energy changes
-  for( int de =-8; de <= 8; de++) w[de+8] = 0;
-  for( int de =-8; de <= 8; de+=4) w[de+8] = exp(-de/temperature);
-  // initialise array for expectation values
-  for( int i = 0; i < 5; i++) average[i] = 0.;
-  initialize(n_spins, temperature, spin_matrix, E, M);
-  // start Monte Carlo computation
-  for (int cycles = 1; cycles <= mcs; cycles++){
-    Metropolis(n_spins, idum, spin_matrix, E, M, w);
-    // update expectation values
-    average[0] += E;    average[1] += E*E;
-    average[2] += M;    average[3] += M*M; average[4] += fabs(M);
-  }
-  // print results
-  output(n_spins, mcs, temperature, average);
-}
-*/

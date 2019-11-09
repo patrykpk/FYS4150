@@ -17,7 +17,7 @@ int main()
 
     ofstream ofile;
 
-    string SpinConfig = "Ordered";
+    string SpinConfig;
 
     string single_temp = "Singel_temp.txt";
     string Temp = "Temperature.txt";
@@ -27,6 +27,8 @@ int main()
 
     cout << "Do you want to run for a single temperature [1] or a temperature interval[2], Monte Carlo interval[3], Spin configuration matrix[4]?" << endl;
     cin >> TemperatureChoice;
+    cout << "Ordered or Unordered spin configuration:" << endl;
+    cin >> SpinConfig;
 
     if (TemperatureChoice == 1){
         cout << "Size of Spin-matrix:" << endl;
