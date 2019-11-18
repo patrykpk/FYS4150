@@ -8,7 +8,7 @@ import time
 # plt.style.use('classic')
 
 Matrix = open(
-    '/Users/kristoffervarslott/Documents/C++/FYS4150/Project4/Project_4_General/SpinConfig.txt', 'r').read()
+    '/Users/kristoffervarslott/Documents/C++/FYS4150/Project4/Project_4_General/SpinConfig_correct.txt', 'r').read()
 lines = Matrix.split("\n")
 
 
@@ -31,7 +31,7 @@ def matrix(i):
 
 plt.figure()
 # plt.ion()
-for i in range(10):
+for i in range(100):
     plt.pcolor(matrix(i), cmap="Greys", edgecolors="r", vmin=-1, vmax=1)
     plt.pause(0.001)
 
