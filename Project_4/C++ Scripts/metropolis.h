@@ -11,8 +11,6 @@ using namespace std;
 
 int PeriodicBC(int InitialPos, int MatrixSize, int Neighbor);
 void Initialize(int L, mat& SpinMatrix, double& Energy, double& Magnetization, string SpinConfig);
-void Metropolis(int L, mat& SpinMatrix, double& Energy, double& Magnetization, vec w);
-void MonteCarloAlgorithm(ofstream& ofile, int L, double Temperature, int MonteCarloCycles, string SpinConfig);
-void WriteToFile(ofstream& ofile, int L, int MonteCarloCycles, double Temperature, vec ExValues);
-
+double Metropolis(int L, mat& SpinMatrix, double& Energy, double& Magnetization, vec w, int& Accepted_Flips);
+void MonteCarloAlgorithm(ofstream& ofile, int L, double Temperature, int MonteCarloCycles, string SpinConfig, int Approach, int Equilibrium);
 #endif // METROPOLIS_H
