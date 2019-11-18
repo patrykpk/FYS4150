@@ -31,8 +31,8 @@ def matrix(i):
 
 plt.figure()
 # plt.ion()
-for i in range(101):
+for i in range(10):
     plt.pcolor(matrix(i), cmap="Greys", edgecolors="r", vmin=-1, vmax=1)
-    plt.pause(0.5)
+    plt.pause(0.001)
 
 plt.show()
