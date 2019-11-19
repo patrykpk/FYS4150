@@ -5,16 +5,17 @@ from matplotlib import colors
 from scipy.stats import kde
 from matplotlib import animation
 import time
-# plt.style.use('classic')
 
-Matrix = open(
-    '/Users/kristoffervarslott/Documents/C++/FYS4150/Project4/Project_4_General/SpinConfig_correct.txt', 'r').read()
+plt.style.use('classic')
+# Opening the file to be read.
+Matrix = open('./SpinConfig_100_Ordered_24.txt', 'r').read()
 lines = Matrix.split("\n")
 
 
+# Defining a funciton matrix for visualicaion later on.
 def matrix(i):
     Liste = []
-    # Matrix = [item.split() for item in Matrix.split('\n')[:-1]]
+    # Looping over every line in file, and appending into list.
     for k in range(len(lines)):
         if (k >= 0 and k <= len(lines)):
             splitted_lines = lines[k].split()
@@ -29,10 +30,9 @@ def matrix(i):
     return L
 
 
+# Plotting over the range of 100 Monte Carlo cycles.
 plt.figure()
-# plt.ion()
 for i in range(100):
     plt.pcolor(matrix(i), cmap="Greys", edgecolors="r", vmin=-1, vmax=1)
     plt.pause(0.001)
-
 plt.show()
