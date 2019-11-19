@@ -1,4 +1,4 @@
-# Visualization of achieving equilibrium
+## Visualization of achieving equilibrium (100 Monte Carlo Cycles)
 
 
 <img align="left" width="400" height="300" src="https://user-images.githubusercontent.com/54407312/69145262-8a1dbe80-0acd-11ea-87f8-6d631ae6756f.gif">
