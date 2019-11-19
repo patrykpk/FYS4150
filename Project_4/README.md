@@ -23,8 +23,10 @@ In order to compile **``main.cpp``**, the other C++ files **``metropolis.cpp``**
 Compiling **``test.cpp``** requires **``metropolis.cpp``** and the corresponding header file in the same folder. In addition the **``catch.hpp``** header file has to be located in the same folder when compiling.
 
 **An example of compiling and linking (Parallelized)**  
-<img align = "left" width="460" height="193" src="https://user-images.githubusercontent.com/54407312/69148288-3ebade80-0ad4-11ea-8e64-693c481454ba.gif">
-
-<img align ="left" width="400" height="190" src="https://user-images.githubusercontent.com/54407312/68093720-ead7b500-fe98-11e9-92e7-bdcda8e2c079.gif">        
+<img align = "left" width="460" height="193" src="https://user-images.githubusercontent.com/54407312/69148288-3ebade80-0ad4-11ea-8e64-693c481454ba.gif">  
 
 > :exclamation: **Note:** When compiling these files make sure that the Armadillo library is present, which again requires you having LAPACK and LBLAS. Compiling here was done on Linux, use **``-lomp``** instead of **``-fopenmp``** if you're using an OS X.
+<br/>
+<br/>
+  
+If you want to use the non-parallized version you'll have to comment out some parts of the code and instead compile with **``g++ -O3 -o NonParallelized main.cpp metropolis.cpp inputoutput.cpp``**.
