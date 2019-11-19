@@ -35,6 +35,7 @@ TEST_CASE("Check if code reproduces analytical results with desired prescision a
     // Initialize all parameters
     int L = 2;
     int Accepted_Flips = 0;
+    int Accepted = 0;
     int MonteCarloCycles = 1000000;
     double Temperature = 1.0;
     double Energy = 0.0;
@@ -54,7 +55,7 @@ TEST_CASE("Check if code reproduces analytical results with desired prescision a
 
     // Runs 1m Monte Carlo cycles using the Metropolis algorithm
     for (int Cycles = 1; Cycles <= MonteCarloCycles; Cycles++){
-        Accepted_Flips = Metropolis(L, SpinMatrix, Energy, Magnetization, w);
+        Accepted = Metropolis(L, SpinMatrix, Energy, Magnetization, w, Accetped_Flips);
         ExValues(0) += Energy;          ExValues(1) += Energy*Energy;
         ExValues(2) += Magnetization;   ExValues(3) += Magnetization*Magnetization;
         ExValues(4) += fabs(Magnetization);
