@@ -25,7 +25,7 @@ Compiling **``test.cpp``** requires **``metropolis.cpp``** and the corresponding
 **An example of compiling and linking (Parallelized)**  
 <img align = "left" width="598" height="251" src="https://user-images.githubusercontent.com/54407312/69148288-3ebade80-0ad4-11ea-8e64-693c481454ba.gif">  
 
-> :exclamation: **Note:** When compiling these files make sure that the Armadillo library is present, which again requires you having LAPACK and LBLAS. Compiling here was done on Linux, use **``-lomp``** instead of &nbsp; **``-fopenmp``** if you're using an OS X.
+> :exclamation: **Note:** When compiling these files make sure that the Armadillo library is present, which again requires you having LAPACK and LBLAS. Compiling here was done on Linux, use <br/> **``-lomp``** instead of **``-fopenmp``** if you're using an OS X.
 <br/>
 <br/>
 <br/>
@@ -56,7 +56,7 @@ Running the compiled and linked **``test.cpp``** file is rather simple and doesn
 
 **Result from terminal:**  
 > ====================================================  
-> All tests passed (9 assertions in 2 test cases)
+> All tests passed (6 assertions in 2 test cases)
 
 ___
 
