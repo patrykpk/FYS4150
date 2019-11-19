@@ -23,9 +23,10 @@ In order to compile **``main.cpp``**, the other C++ files **``metropolis.cpp``**
 Compiling **``test.cpp``** requires **``metropolis.cpp``** and the corresponding header file in the same folder. In addition the **``catch.hpp``** header file has to be located in the same folder when compiling.
 
 **An example of compiling and linking (Parallelized)**  
-<img align = "left" width="552" height="232" src="https://user-images.githubusercontent.com/54407312/69148288-3ebade80-0ad4-11ea-8e64-693c481454ba.gif">  
+<img align = "left" width="598" height="251" src="https://user-images.githubusercontent.com/54407312/69148288-3ebade80-0ad4-11ea-8e64-693c481454ba.gif">  
 
-> :exclamation: **Note:** When compiling these files make sure that the Armadillo library is present, which again requires you having LAPACK and LBLAS. Compiling here was done on Linux, use **``-lomp``** instead of **``-fopenmp``** if you're using an OS X.
+> :exclamation: **Note:** When compiling these files make sure that the Armadillo library is present, which again requires you having LAPACK and LBLAS. Compiling here was done on Linux, use **``-lomp``** instead of &nbsp; **``-fopenmp``** if you're using an OS X.
+<br/>
 <br/>
 <br/>
   
@@ -40,8 +41,8 @@ Running the compiled and linked main.cpp file doesn't require any command line a
 Assuming that the executable file produced after compiling and linking is **``Parallelized``**, then this file could be run the following way.  
 
 **An example of running the compiled file (Terminal):** 
-
-
+<img align = "left" width="598" height="251" src="https://user-images.githubusercontent.com/54407312/69172668-8f473180-0afe-11ea-8230-a1477ba4d6e7.gif">  
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 Every choice gives an output in a form of a **``.txt``** file based on the method used.  
 
