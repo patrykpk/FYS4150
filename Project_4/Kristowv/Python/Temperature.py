@@ -7,10 +7,10 @@ from matplotlib import rc, rcParams
 
 rc('text', usetex=True)
 rc('font', **{'family': 'serif', 'serif': ['Helvetica']})
+plt.style.use('classic')
+path = "./"
 
-path = "/Users/kristoffervarslott/Documents/C++/FYS4150/Project4/Project_4_General/"
-# plt.style.use('classic')
-
+# Opening all files for L = 40, 60, 80, 100
 graph_data1 = open(path + 'Temperature_40_Unordered_64.txt', 'r').read()
 lines1 = graph_data1.split("\n")
 
@@ -20,13 +20,14 @@ lines2 = graph_data2.split("\n")
 graph_data3 = open(path + 'Temperature_80_Unordered_64.txt', 'r').read()
 lines3 = graph_data3.split("\n")
 
-graph_data4 = open(path + 'Temperature_100_Unordered_64_wrong.txt', 'r').read()
+graph_data4 = open(path + 'Temperature_100_Unordered_64.txt', 'r').read()
 lines4 = graph_data4.split("\n")
 
-
+# Critical temperature, not used.
 T_C = 2.269
-T = []
 
+# Defining empty list for values of interest.
+T = []
 
 E1 = []
 C_V1 = []
@@ -37,7 +38,6 @@ E2 = []
 C_V2 = []
 M2 = []
 X2 = []
-
 
 E3 = []
 C_V3 = []
@@ -51,6 +51,7 @@ X4 = []
 
 
 start = time.time()
+# Looping thorugh each file and appending to lists.
 for i in range(len(lines1)-2):
     if (i > 6 and i < len(lines1)):
         splitted_lines1 = lines1[i].split()
@@ -82,23 +83,29 @@ for i in range(len(lines1)-2):
 
 end = time.time()
 print ("Code time:", end - start)
+# May be used if one would like to divide temperature on T_C.
 #T = list(map(lambda x: x/T_C, T1))
 
+"""
+Plotting all values given by the lists:
+"""
+
+# Energy vs Tempeature
 plt.figure(1)
 plt.margins(0)
+
 plt.plot(T, E1, linewidth=0.5, linestyle="-", label="L  = 40")
 plt.plot(T, E2, linewidth=0.5, linestyle="-", label="L = 60")
 plt.plot(T, E3, linewidth=0.5, linestyle="-", label="L = 80")
 plt.plot(T, E4, linewidth=0.5, linestyle="-", label="L = 100")
-
 plt.legend(loc='upper left', prop={"size": 13})
 plt.xlabel("Tempeature T [kT/J]", fontsize=16)
 plt.ylabel("Mean energy" + r" $\langle E \rangle$", fontsize=16)
 plt.title("Mean energy as a function of temperature", fontsize=17)
-
 plt.tight_layout()
 
 
+# Heat capacity vs Tempeature
 plt.figure(2)
 plt.margins(0)
 
@@ -131,7 +138,7 @@ for i in range(len(C_V4)):
 plt.plot(T, C_V4, linewidth=0.5, linestyle="-", label="L = 100")
 plt.plot(T_CV4, max(C_V4), marker="o", color="C3", markersize=4)
 
-# Plot line:
+# Plotting straight lines to visualize approximated curie temperature :
 plt.plot([T_CV1, T_CV1], [min(C_V1), max(C_V1)], linestyle="--", color="k", linewidth=0.3)
 plt.plot([T_CV2, T_CV2], [min(C_V1), max(C_V2)], linestyle="--", color="k", linewidth=0.3)
 plt.plot([T_CV3, T_CV3], [min(C_V1), max(C_V3)], linestyle="--", color="k", linewidth=0.3)
@@ -143,10 +150,8 @@ plt.ylabel('Heat capacity' + r" $C_V$", fontsize=16)
 plt.title("Heat capacity as a function of temperature", fontsize=17)
 plt.tight_layout()
 
-print(T_CV1)
-print(T_CV2)
-print(T_CV3)
-print(T_CV4)
+
+# Magnetization vs Temperature
 plt.figure(3)
 plt.margins(0)
 
@@ -154,13 +159,13 @@ plt.plot(T, M1, linewidth=0.5, linestyle="-", label="L = 40")
 plt.plot(T, M2, linewidth=0.5, linestyle="-", label="L = 60")
 plt.plot(T, M3, linewidth=0.5, linestyle="-", label="L = 80")
 plt.plot(T, M4, linewidth=0.5, linestyle="-", label="L = 100")
-
 plt.legend(loc='upper right', prop={"size": 13})
 plt.xlabel("Tempeature T [kT/J]", fontsize=16)
 plt.ylabel('Mean magnetization' + r" $\langle$" + "$|M|$" + r"$\rangle$", fontsize=16)
 plt.title("Mean magnetization as a function of temperature", fontsize=17)
 plt.tight_layout()
 
+# Susceptibility vs Tempeature
 plt.figure(4)
 plt.margins(0)
 
@@ -176,7 +181,7 @@ plt.title("Susceptibility as a function of temperature", fontsize=17)
 plt.tight_layout()
 
 
-# Polyfitting L to infinty:
+# Interpolating using polyfit of first degree. Where L-inverse and the approximated curie temperature for L = [40, 60 ,80, 100].
 TC = [T_CV1, T_CV2, T_CV3, T_CV4]
 L_inv = [1./40, 1./60, 1./80, 1./100]
 
@@ -186,7 +191,6 @@ u = np.linspace(0, 1./40, 100)   # Evaluate the polynomial at (other) points
 v = np.polyval(p, u)
 
 plt.figure(5)
-
 plt.plot(L_inv, TC, "o", label="L = [40,60,80,100]")
 plt.plot(u, v, "--r", linewidth=0.8,  label="y=%.4f x + %.4f" % (slope, intercept))
 plt.legend(loc='upper left', prop={"size": 13})

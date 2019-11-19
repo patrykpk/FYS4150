@@ -7,8 +7,7 @@ rc('text', usetex=True)
 rc('font', **{'family': 'serif', 'serif': ['Random']})
 
 # plt.style.use('classic')
-graph_data = open(
-    '/Users/kristoffervarslott/Documents/C++/FYS4150/Project4/Project_4_General/MonteCarloCycle.txt', 'r').read()
+graph_data = open('./MonteCarloCycle.txt', 'r').read()
 
 lines = graph_data.split("\n")
 ENCUT = []
