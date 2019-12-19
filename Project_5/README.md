@@ -57,7 +57,20 @@ terminal the following way.
 ![Test_Running](https://user-images.githubusercontent.com/54407312/67162027-91339e80-f360-11e9-948c-8c99f60bb6ee.png)
 
 **Result from terminal:**  
-> ====================================================  
+> Choose step length for time Δt  
+> 0.05  
+> Choose how long you want to run the calculation (s):  
+> 2  
+> \----------------------------------------------------  
+> Information for the calculation:  
+> Amount of points N = 10  
+> Step-Length Δx = 0.1  
+> Step length Δt = 0.05  
+> Total time T = 2  
+> Number of time iterations n = 41  
+> Alpha α = 5  
+> \---------------------------------------------------  
+> \====================================================  
 > All tests passed (19 assertions in 2 test cases)
 
 ___
