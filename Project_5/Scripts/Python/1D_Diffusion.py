@@ -122,7 +122,7 @@ def Rel_error_schemes(Scheme):
     Rel_error_final = []
     t = []
     for i in range(1, len(FE)-2):
-        t_new = float(i * 5)  # Avoiding loss of numerical precision.
+        t_new = float(i * 0.005)
         analytic = Analytic_solution(10, x[1:-1], t_new)
         for j in range(1, 9):
             # Summation over all x-values for a given time(Depending on value of i).
@@ -132,7 +132,7 @@ def Rel_error_schemes(Scheme):
             sum2 += analytic[j]**2
         # Collecting sum and defining the relative error
         Rel_error = np.sqrt(sum1/sum2)
-        t.append(t_new/100.)
+        t.append(t_new)
         Rel_error_final.append(Rel_error)
     return Rel_error_final, t
 
@@ -164,7 +164,7 @@ def Rel_error_schemes1(Scheme):
     t = []
     Rel_error_final = []
     for i in range(0, len(FE1)-2):
-        t_new = float(i * 5)
+        t_new = float(i * 0.00005)
         analytic = Analytic_solution(100, x1[1:-1], t_new)
         for j in range(1, 99):
             # Summation over all x-values for a given time(Depending on value of i).
@@ -174,7 +174,7 @@ def Rel_error_schemes1(Scheme):
             sum2 += analytic[j]**2
         # Collecting sum and defining the relative error
         Rel_error = np.sqrt(sum1/sum2)
-        t.append(t_new/100000.)
+        t.append(t_new)
         Rel_error_final.insert(i, Rel_error)
     return Rel_error_final, t
 
