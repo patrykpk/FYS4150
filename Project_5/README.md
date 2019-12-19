@@ -26,7 +26,8 @@ to be included during compilation with their corresponding header files loacated
 Compiling **``test.cpp``** requires **``Algorithms1D.cpp``**, **``Algorithms2D.cpp``** and **``Solvers.cpp``** with their corresponding 
 header file in the same folder. In addition the **``catch.hpp``** header file has to be located in the same folder when compiling.
 
-**An example of compiling and linking**
+**An example of compiling and linking**  
+<img align = "left" width="598" height="251" src="https://user-images.githubusercontent.com/54407312/71211329-30b4d500-22af-11ea-910d-9a49607a8741.gif">  
 
 > :exclamation: **Note:** When compiling these files make sure that the Armadillo library is present, which again requires you 
 having LAPACK and LBLAS. Compiling here was done on Linux, use <br/> **``-lomp``** instead of **``-fopenmp``** if you're using an OS X.
@@ -38,14 +39,23 @@ ___
 Running the compiled and linked **``main.cpp``** file doesn't require any command line arguments in order to execute. Everything is
 done through the terminal where you simply choose what you want to do based on the choices you're given.  
 
-Assuming that the executable file produced after compiling and linking is **``Project_5``**, then this file could be run the
+Assuming that the executable file produced after compiling and linking is **``Diffusion``**, then this file could be run the
 following way.  
 
 **An example of running the compiled file (Terminal):** 
+<img align = "left" width="598" height="251" src="https://user-images.githubusercontent.com/54407312/71211497-8c7f5e00-22af-11ea-96ec-7f628fbc26ee.gif">  
+
+<br/>
+<br/>
 
 You will be given the choice of either writing the output to a file in a form of a **``.txt``** or simply writing the 
 output to the terminal.
-
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 ___
 
 ***Unit Tests - (test.cpp)***  
