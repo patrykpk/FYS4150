@@ -21,7 +21,8 @@ void Diffusion_1D_FE(double dx){
   cout << "Choose how long you want to run the calculation (s):" << endl;
   cin >> T;
 
-  int n = int(T/dt)+1;
+  int n = int(T/dt)+1;       // Amount of timesteps
+
   cout << "--------------------------------" << endl;
   cout << "Information for the calculation:" << endl;
   cout << "Amount of points N = " << N << endl;

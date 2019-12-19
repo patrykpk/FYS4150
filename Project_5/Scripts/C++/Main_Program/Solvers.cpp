@@ -16,7 +16,7 @@ void TridiagSolv(rowvec &x, rowvec y, int N, double b, double d){
   x(N-1) = 1;
 
   for (int i = N-2; i > 0; i--){
-    x(i) = (y(i)-b*x(i+1))/Diagonal(i);    // Numerical solution for x
+    x(i) = (y(i)-b*x(i+1))/Diagonal(i);
   }
   return;
 }
@@ -25,11 +25,11 @@ void JacobiSolv(mat &u, double dx, double dt, double tol, int Iteration_Limit, d
   mat Previous_u = u;
   ofstream ofile;
 
-  int T = int(MaxTime/dt)+1;
-  int N = int(1/dx)+1;
+  int T = int(MaxTime/dt)+1;   // Timesteps
+  int N = int(1/dx)+1;         // Size of the matrix along one direction
 
-  double alpha = dt/(dx*dx);
-  double MatSize = N*N;
+  double alpha = dt/(dx*dx);   // Alpha
+  double MatSize = N*N;        // Amount of points in the matrix grid
   double delta;
   double Difference;
 
@@ -54,12 +54,12 @@ void JacobiSolv(mat &u, double dx, double dt, double tol, int Iteration_Limit, d
   else if (Compare == "N"){
     ofile.open("Implicit2D_"+to_string(dx)+".txt");
   }
-  //ofile << u << endl;
 
   int SingleOutput;
   cout << "Output all values[1] or only the last one[2]?" << endl;
   cin >> SingleOutput;
 
+  // Jacobi Method
   for (int t=0; t<=T; t++){
     int iterations = 0;
     Difference = 1;
@@ -82,6 +82,8 @@ void JacobiSolv(mat &u, double dx, double dt, double tol, int Iteration_Limit, d
     Previous_u = u;   // Last time step
     
     mat Analytic = u_cube.slice(t);
+
+    // Writing the output to file
     if (SingleOutput == 1){
       if (Compare == "Y"){
         ofile << (Analytic-u) << endl;

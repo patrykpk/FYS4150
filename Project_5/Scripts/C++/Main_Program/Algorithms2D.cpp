@@ -18,6 +18,7 @@ void Explicit_2D(double dx_2d){
 
   int TimeSteps = int(T/dt_2);
 
+  // Outputs information to the terminal
   cout << "--------------------------------" << endl;
   cout << "Information for the calculation:" << endl;
   cout << "Amount of points N = " << N_2dim << endl;
@@ -65,11 +66,15 @@ void Explicit_2D(double dx_2d){
       int SingleOutput;
       cout << "Output all values[1] or only the last one[2]?" << endl;
       cin >> SingleOutput;
+
+      // Writes to file the difference between analytical and computed
       if (SingleOutput == 1){
         for (int i = 1; i <= TimeSteps; i++){
           ofile << u_cube.slice(i)-u_2dim.slice(i) << endl;
         }
       }
+      // Writes to file the difference between analytical and computed
+      // for the last value only
       else if (SingleOutput == 2){
         ofile << u_cube.slice(TimeSteps)-u_2dim.slice(TimeSteps) << endl;
       }
@@ -81,11 +86,14 @@ void Explicit_2D(double dx_2d){
       int SingleOutput;
       cout << "Output all values[1] or only the last one[2]?" << endl;
       cin >> SingleOutput;
+
+      // Writes the output to file 
       if (SingleOutput == 1){
         for (int i = 1; i <= TimeSteps; i++){
           ofile << u_2dim.slice(i) << endl;
         }
       }
+      // Writes the last value to file
       else if (SingleOutput == 2){
         ofile << u_2dim.slice(TimeSteps);
       }
@@ -96,7 +104,6 @@ void Explicit_2D(double dx_2d){
       cout << u_2dim << endl;
     }
   }
-
   return;
 }
 
@@ -116,6 +123,7 @@ void Implicit_2D(double dx_2d){
 
   int TimeSteps = int(Time/dt_2);
 
+  // Outputs information to the terminal
   cout << "--------------------------------" << endl;
   cout << "Information for the calculation:" << endl;
   cout << "Amount of points N = " << N_2dim << endl;
@@ -126,23 +134,22 @@ void Implicit_2D(double dx_2d){
   cout << "Alpha \u03B1 = " << alpha_2dim << endl;
   cout << "--------------------------------" << endl;
 
-
+  // Assigning values to matrix
   mat u_implicit = zeros<mat>(N_2dim+1,N_2dim+1);
   for (int i = 1; i < N_2dim; i++){
     for (int j = 1; j < N_2dim; j++){
       u_implicit(i,j) = sin(i*dx_2d*pi)*sin(j*pi*dx_2d);
     }
   }
-
-  cout << u_implicit << endl;
-
   double tolerance = 1e-12;
-  int maxiter = 10000;
-  JacobiSolv(u_implicit, dx_2d, dt_2, tolerance, maxiter, Time);
+  int Iteration_Limit = 10000;
+  JacobiSolv(u_implicit, dx_2d, dt_2, tolerance, Iteration_Limit, Time);
   return;
 }
 
 void ForwardEuler_2D(cube &u, double alpha, int TimeSteps, int N){
+  // Performing Forward Euler
+  // Assigning a value to the 3-dimensional array
   for (int t = 0; t < TimeSteps; t++){
     for (int i = 1; i < N; i++){
       for (int j = 1; j < N; j++){

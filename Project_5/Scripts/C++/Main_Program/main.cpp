@@ -57,13 +57,15 @@ int main(){
     double dx_2d;
     cout << "Choose step-length for \u0394x:\n";
     cin >> dx_2d;
+
+    // Explicit Scheme
     if (Scheme == 1){
       Explicit_2D(dx_2d);
     }
+    // Implicit Scheme
     else if (Scheme == 2){
       Implicit_2D(dx_2d);
     }
   }
-
   return 0;
 }
