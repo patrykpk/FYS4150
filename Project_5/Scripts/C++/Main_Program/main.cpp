@@ -22,8 +22,8 @@ int main(){
   cout << "Would you like to run the 1D or 2D case?\n";
   cout << "Choose by writing either 1 or 2:\n";
   cin >> DiffDim; //Diffusion dimension
-
-
+  
+  //-----------------------One Dimension----------------------------------
   if (DiffDim == 1){
     cout << "What algorithm would you like to run?\n";
     cout << "Forward Euler[1], Backward Euler[2] or Crank-Nicolson[3]\n";
