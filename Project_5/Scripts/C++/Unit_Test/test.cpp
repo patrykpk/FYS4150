@@ -24,7 +24,11 @@ TEST_CASE("Checking if 1D CN gives the analytical steady-state answer at t=2 for
     int n = int(T/dt)+1;
 
     mat A = Diffusion_1D_CN(dx);
-
+    
+    // Indexing and construcing of the matrix seems odd
+    // Not really dx = 0.1 but dx = 0.11. Checking to
+    // verify if this assumption is correct.
+    
     // Analytical steady state f(x)=x
     CHECK(A(n-1,0) == Approx(0));
     CHECK(A(n-1,1) == Approx(0.111111));
