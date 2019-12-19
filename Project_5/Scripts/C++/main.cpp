@@ -14,15 +14,15 @@ void Diffusion_1D_FE(double dx);
 void Diffusion_1D_BE(double dx);
 void Diffusion_1D_CN(double dx);
 
+void Analytic2D(mat &u, int N, double t);
 void Explicit_2D(double dx_2d);
 void ForwardEuler_2D(cube &u, double alpha, int TimeSteps, int N);
-
 void Implicit_2D(double dx_2d);
-void JacobiSolv(mat &u, double dx, double dt, double tol, int Iteration_Limit);
 
+void JacobiSolv(mat &u, double dx, double dt, double tol, int Iteration_Limit, double MaxTime);
 void TridiagSolv(rowvec &x, rowvec y, int N, double b, double d);
 
-int main(int argc, char* argv[]){
+int main(){
   int DiffDim;
   int Algorithm;
 
@@ -74,14 +74,9 @@ int main(int argc, char* argv[]){
   }
 
   return 0;
-  
-  
-  
-
 }
 
-void TridiagSolv(rowvec &x, rowvec y, int N, double b, double d)
-{
+void TridiagSolv(rowvec &x, rowvec y, int N, double b, double d){
 
   vec Diagonal = zeros<vec>(N);
   Diagonal(1) = d;
@@ -291,7 +286,7 @@ void Diffusion_1D_CN(double dx){
       u_val(j) = alpha*(temp_u_row(j+1)+temp_u_row(j-1))+FE_alpha*temp_u_row(j);
     }
     TridiagSolv(temp_u_row, u_val, N, -alpha, 2+2*alpha);
-    u(i, span::all) = temp_u_row;
+    u.row(i) = temp_u_row;
   }
 
 
@@ -306,7 +301,7 @@ void Diffusion_1D_CN(double dx){
   if (Terminal == "Y"){
     cout << u << endl;
   }
-  
+
   if (Choice == "Y"){
     ofile << u << endl;
     ofile.close();
@@ -328,7 +323,7 @@ void Explicit_2D(double dx_2d){
   cout << "Choose how long you want to run the calculation (s):" << endl;
   cin >> T;
 
-  int TimeSteps = int(T/dt_2)+1;
+  int TimeSteps = int(T/dt_2);
 
   cout << "--------------------------------" << endl;
   cout << "Information for the calculation:" << endl;
@@ -347,6 +342,16 @@ void Explicit_2D(double dx_2d){
       u_2dim(i,j,0) = sin(i*dx_2d*pi)*sin(j*pi*dx_2d);
     }
   }
+  //---------------------------------------------------------
+  mat u_analytic = zeros<mat>(N_2dim+1, N_2dim+1);
+  cube u_cube = zeros<cube>(N_2dim+1, N_2dim+1, TimeSteps+1);
+  double Time;
+  for (int t = 0; t <= TimeSteps; t++){
+    Time = t*dt_2;
+    Analytic2D(u_analytic, N_2dim, Time);
+    u_cube.slice(t) = u_analytic;
+  }
+  //--------------------------------------------------------
 
   string Choice;
   cout << "Would you like to save the values to a file (Y/N)?\n";
@@ -357,12 +362,43 @@ void Explicit_2D(double dx_2d){
     cout << "Do you want to print out the results to the terminal? (Y/N)\n";
     cin >> Terminal;
 
-    ofile.open("Forward2D.txt");
-    ForwardEuler_2D(u_2dim, alpha_2dim, TimeSteps, N_2dim);
-    for (int i = 0; i < TimeSteps; i++){
-      ofile << u_2dim.slice(i) << endl;
-    }
+    string Compare;
+    cout << "Compare Analytic vs Explicit?(Y/N)\n";
+    cin >> Compare;
+
+    if (Compare == "Y"){
+      ofile.open("Compare_Explicit_vs_Analytic_"+to_string(dx_2d)+".txt");
+      ForwardEuler_2D(u_2dim, alpha_2dim, TimeSteps, N_2dim);
+      int SingleOutput;
+      cout << "Output all values[1] or only the last one[2]?" << endl;
+      cin >> SingleOutput;
+      if (SingleOutput == 1){
+        for (int i = 1; i <= TimeSteps; i++){
+          ofile << u_cube.slice(i)-u_2dim.slice(i) << endl;
+        }
+      }
+      else if (SingleOutput == 2){
+        ofile << u_cube.slice(TimeSteps)-u_2dim.slice(TimeSteps) << endl;
+      }
     ofile.close();
+    }
+    else if (Compare == "N"){
+      ofile.open("Explicit2D_"+to_string(dx_2d)+".txt");
+      ForwardEuler_2D(u_2dim, alpha_2dim, TimeSteps, N_2dim);
+      int SingleOutput;
+      cout << "Output all values[1] or only the last one[2]?" << endl;
+      cin >> SingleOutput;
+      if (SingleOutput == 1){
+        for (int i = 1; i <= TimeSteps; i++){
+          ofile << u_2dim.slice(i) << endl;
+        }
+      }
+      else if (SingleOutput == 2){
+        ofile << u_2dim.slice(TimeSteps);
+      }
+    ofile.close();
+    }
+
     if (Terminal == "Y"){
       cout << u_2dim << endl;
     }
@@ -381,18 +417,18 @@ void Implicit_2D(double dx_2d){
   int N_2dim = int(1.0/dx_2d);
 
   // Final time for the calculation
-  double T;
+  double Time;
   cout << "Choose how long you want to run the calculation (s):" << endl;
-  cin >> T;
+  cin >> Time;
 
-  int TimeSteps = int(T/dt_2);
+  int TimeSteps = int(Time/dt_2);
 
   cout << "--------------------------------" << endl;
   cout << "Information for the calculation:" << endl;
   cout << "Amount of points N = " << N_2dim << endl;
   cout << "Step-Length \u0394x = " << dx_2d << endl;
   cout << "Step length \u0394t = " << dt_2 << endl;
-  cout << "Total time T = " << T << endl;
+  cout << "Total time T = " << Time << endl;
   cout << "Number of time iterations n = " << TimeSteps << endl; 
   cout << "Alpha \u03B1 = " << alpha_2dim << endl;
   cout << "--------------------------------" << endl;
@@ -409,7 +445,7 @@ void Implicit_2D(double dx_2d){
 
   double tolerance = 1e-12;
   int maxiter = 10000;
-  JacobiSolv(u_implicit, dx_2d, dt_2, tolerance, maxiter);
+  JacobiSolv(u_implicit, dx_2d, dt_2, tolerance, maxiter, Time);
   return;
 }
 
@@ -425,43 +461,102 @@ void ForwardEuler_2D(cube &u, double alpha, int TimeSteps, int N){
 }
 
 
-void JacobiSolv(mat &u, double dx, double dt, double tol, int Iteration_Limit){
+void JacobiSolv(mat &u, double dx, double dt, double tol, int Iteration_Limit, double MaxTime){
   mat Previous_u = u;
   ofstream ofile;
-  ofile.open("Hello.txt");
 
-  ofile << u << endl;
-  int T = int(1/dt);
+  
+  int T = int(MaxTime/dt)+1;
   int N = int(1/dx)+1;
 
   double alpha = dt/(dx*dx);
   double MatSize = N*N;
   double delta;
-  double diff;
+  double Difference;
 
-  for (int t=1; t<T; t++){
+  //--------------------------------------------
+  mat u_analytic = zeros<mat>(N, N);
+  cube u_cube = zeros<cube>(N, N, T+1);
+  double Time;
+  for (int t = 0; t <= T; t++){
+    Time = t*dt;
+    Analytic2D(u_analytic, N-1, Time);
+    u_cube.slice(t) = u_analytic;
+  }
+  //--------------------------------------------
+
+  string Compare;
+  cout << "Compare Analytic vs Implicit?(Y/N)\n";
+  cin >> Compare;
+
+  if (Compare == "Y"){
+    ofile.open("Compare_Implicit2D_vs_Analytic_"+to_string(dx)+".txt");
+  }
+  else if (Compare == "N"){
+    ofile.open("Implicit2D_"+to_string(dx)+".txt");
+  }
+  //ofile << u << endl;
+
+  int SingleOutput;
+  cout << "Output all values[1] or only the last one[2]?" << endl;
+  cin >> SingleOutput;
+
+  for (int t=0; t<=T; t++){
     int iterations = 0;
-    diff = 1;
+    Difference = 1;
 
     mat u_guess = ones<mat>(N,N);
-    while (iterations < Iteration_Limit && diff > tol){
-      diff = 0;
+    while (iterations < Iteration_Limit && Difference > tol){
+      Difference = 0;
 
       for (int j=1; j<N-1; j++){
         for (int i = 1; i <N-1; i++){
           delta = (u_guess(i,j+1)+u_guess(i,j-1)+u_guess(i+1,j)+u_guess(i-1,j));
           u(i,j) = 1.0/(1.0+4*alpha)*(alpha*delta+Previous_u(i,j));
-          diff += fabs(u(i,j)-u_guess(i,j));
+          Difference += fabs(u(i,j)-u_guess(i,j));
         }
       }
       u_guess = u;
-      diff /= MatSize;
+      Difference /= MatSize;
       iterations++;
     }
     Previous_u = u;   // Last time step
-    ofile << u << endl;
+    
+    mat Analytic = u_cube.slice(t);
+    if (SingleOutput == 1){
+      if (Compare == "Y"){
+        ofile << (Analytic-u) << endl;
+      }
+      else if (Compare == "N"){
+        ofile << u << endl;
+      }
+    }
+    else if (SingleOutput == 2 && t==T){
+      if (Compare == "Y"){
+        ofile << (Analytic-u) << endl;
+      }
+      else if (Compare == "N"){
+        ofile << u << endl;
+      }
+
+    }
+
+
   }
   ofile.close();
   return;
 
+}
+
+void Analytic2D(mat &u, int N, double t){
+  double pi = 4*atan(1);
+
+  vec x = linspace<vec>(0,1,N+1);
+  vec y = linspace<vec>(0,1,N+1);
+
+  for (int i = 0; i < N; i++){
+    for (int j = 0; j < N; j++){
+      u(i,j) = sin(pi*x(i))*sin(pi*y(j))*exp(-2*pi*pi*t);
+    }
+  }
 }
