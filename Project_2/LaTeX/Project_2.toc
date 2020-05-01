@@ -1,0 +1,14 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {I}Introduction}{3}{section.1}
+\contentsline {section}{\numberline {II}Theory}{3}{section.2}
+\contentsline {subsection}{\numberline {i}The buckling beam problem}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {ii}Quantum dots in three dimension}{5}{subsection.2.2}
+\contentsline {section}{\numberline {III}Method}{8}{section.3}
+\contentsline {subsection}{\numberline {i}Jacobi method}{8}{subsection.3.1}
+\contentsline {section}{\numberline {IV}Implementation}{10}{section.4}
+\contentsline {subsection}{\numberline {i}Overview: Implementation of code}{10}{subsection.4.1}
+\contentsline {section}{\numberline {V}Numerical results}{12}{section.5}
+\contentsline {subsection}{\numberline {i}Numerical analysis of the Buckling beam problem}{12}{subsection.5.1}
+\contentsline {subsection}{\numberline {ii}Numerical analysis of Quantum dots for one and two electrons}{14}{subsection.5.2}
+\contentsline {section}{\numberline {VI}Discussion}{16}{section.6}
+\contentsline {section}{\numberline {VII}Conclusion}{16}{section.7}

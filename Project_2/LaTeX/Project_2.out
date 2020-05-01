@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Theory}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{The buckling beam problem}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Quantum dots in three dimension}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Method}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Jacobi method}{section.3}% 6
+\BOOKMARK [1][-]{section.4}{Implementation}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Overview: Implementation of code}{section.4}% 8
+\BOOKMARK [1][-]{section.5}{Numerical results}{}% 9
+\BOOKMARK [2][-]{subsection.5.1}{Numerical analysis of the Buckling beam problem}{section.5}% 10
+\BOOKMARK [2][-]{subsection.5.2}{Numerical analysis of Quantum dots for one and two electrons}{section.5}% 11
+\BOOKMARK [1][-]{section.6}{Discussion}{}% 12
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 13
